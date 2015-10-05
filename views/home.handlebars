@@ -1,0 +1,39 @@
+<div>
+
+	{{#create_program_template}}
+		<p>
+			<label for="organisation">Organisation Name</label>
+			<input type="text" id="organisation" name="OrganisationName" placeholder="{{OrganisationName}}">
+		</p>
+		<p>
+			<label for="contact">Contact Person</label>
+			<input type="text" id="contact" name="ContactPerson" placeholder="{{ContactPerson}}">
+		</p>
+		<p>
+			<label for="type">Type of Organisation</label>
+			<input type="text" id="type" name="type" placeholder="Type of Organisation">
+		</p>
+		<p>
+			<label for="Description">Description</label>
+			<input type="text" id="Description" name="Description" placeholder="Description of Organisation">
+		</p>
+		<p>
+			<label for="criteria">Criteria</label>
+			<ul type="text" id="criteria" name="Criteria">
+				{{#each Criteria}}
+					<li>
+						<p>
+							<label for="{{fieldName}}">{{Indicator}}</label>
+							<input type="number" name="{{Indicator}}" id="{{fieldName}}">
+						</p>
+						{{!-- <p>
+							<label for="desc{{fieldName}}">Description</label>
+							<textarea type="text" name="Description" id="desc{{fieldName}}"></textarea>
+						</p> --}}
+					</li>
+				{{/each}}
+			</ul>
+		</p>
+		
+	{{/create_program_template}}
+</div>
