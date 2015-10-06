@@ -1,40 +1,46 @@
 <div>
 
 	<h1>HUB METRICS</h1>
+
 	{{#create_program_template}}
-		<p>
-			<label for="organisation">Organisation Name</label>
-			<input type="text" id="organisation" name="OrganisationName" placeholder="{{OrganisationName}}">
-		</p>
-		<p>
-			<label for="contact">Contact Person</label>
-			<input type="text" id="contact" name="ContactPerson" placeholder="{{ContactPerson}}">
-		</p>
-		<p>
-			<label for="type">Type of Organisation</label>
-			<input type="text" id="type" name="type" placeholder="Type of Organisation">
-		</p>
-		<p>
-			<label for="Description">Description</label>
-			<input type="text" id="Description" name="Description" placeholder="Description of Organisation">
-		</p>
-		<p>
-			<label for="criteria">Criteria</label>
-			<ul type="text" id="criteria" name="Criteria">
+		<table>
+			<tbody>
+				<tr>
+					<td>Organisation Name</td>
+					<input type="text" id="organisation" name="OrganisationName" placeholder="{{OrganisationName}}">
+				</tr>
+				<tr>
+					<label for="contact">Contact Person</label>
+					<input type="text" id="contact" name="ContactPerson" placeholder="{{ContactPerson}}">
+				</tr>
+				<tr>
+					<label for="type">Type of Organisation</label>
+					<input type="text" id="type" name="type" placeholder="Type of Organisation">
+				</tr>
+				<tr>
+					<label for="Description">Description</label>
+					<input type="text" id="Description" name="Description" placeholder="Description of Organisation">
+				</tr>
+			</tbody>
+		</table>
+		<table>
+			<thead>
+				<tr>
+					<th colspan="2">Criteria</th>
+				</tr>
+			</thead>
+			<tbody>
 				{{#each Criteria}}
-					<li>
-						<p>
-							<label for="{{fieldName}}">{{Indicator}}</label>
-							<input type="number" name="{{Indicator}}" id="{{fieldName}}">
-						</p>
-						{{!-- <p>
-							<label for="desc{{fieldName}}">Description</label>
-							<textarea type="text" name="Description" id="desc{{fieldName}}"></textarea>
-						</p> --}}
-					</li>
+					<tr>
+						<td for="{{fieldName}}">{{Indicator}}</td>
+						<td><input type="number" name="{{Indicator}}" id="{{fieldName}}"></td>
+					{{!-- <p>
+						<label for="desc{{fieldName}}">Description</label>
+						<textarea type="text" name="Description" id="desc{{fieldName}}"></textarea>
+					</p> --}}
+					</tr>
 				{{/each}}
-			</ul>
-		</p>
-		
-	{{/create_program_template}}
+			</tbody>
+		{{/create_program_template}}
+	</table>
 </div>
