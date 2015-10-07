@@ -23,31 +23,34 @@ module.exports = {
 	render_criteria : function(req, res, next){
 
 		var create_program_template = require('../data/funder_criteria');
-		console.log(create_program_template)
 		res.render("criteria", {create_program_template : create_program_template});
 	},
 	save_report : function(req, res, next){
 		var report_template = require('../data/funder_criteria'),
 			answers = JSON.parse(JSON.stringify(req.body));
 
+		console.log(answers)
 		var report_answers = {};
 
+		//Create copy of template. Don't wanna mess up template.
 		for(key in report_template){
 			report_answers[key] = report_template[key]; 
 		}
-		//Getting basic hub details
-		report_answers.OrganisationName = answers.OrganisationName;
-		report_answers.ContactPerson = answers.ContactPerson;
-		report_answers.Type = answers.Type;
-		report_answers.Description = answers.Description;
+		for(key in report_template){
+			
+			//Getting basic hub details
+			if (key !== "Criteria") {
+				report_answers[key] = answers[key];
+			}
+			else{
+				//Getting Criteria values
+				for(var metric = 0; metric < report_answers.Criteria.length; metric++){
 
-		//Getting Criteria values
-		for(var metric = 0; metric < report_answers.Criteria.length; metric++){
+					if(answers.hasOwnProperty(report_answers.Criteria[metric].fieldName)){
 
-			if(answers.hasOwnProperty(report_answers.Criteria[metric].fieldName)){
-
-				report_answers.Criteria[metric].Value = answers[report_answers.Criteria[metric].fieldName];
-
+						report_answers.Criteria[metric].Value = answers[report_answers.Criteria[metric].fieldName];
+					}
+				}
 			}
 		}
 

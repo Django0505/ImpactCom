@@ -42,7 +42,7 @@
 				<tbody>
 					{{#each Criteria}}
 						<tr>
-							<td for="{{fieldName}}">{{Indicator}}</td>
+							<td><input type="checkbox" name="{{fieldName}}_checkbox">{{Indicator}}</td>
 							<td><input type="number" name="{{fieldName}}" id="{{fieldName}}"></td>
 						{{!-- <p>
 							<label for="desc{{fieldName}}">Description</label>
