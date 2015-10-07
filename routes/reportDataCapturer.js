@@ -1,12 +1,20 @@
 var fs = require('fs');
 
+var save_data = function(data, filename){
+
+	var path = require('path');
+
+	fs.writeFile(path.join(__dirname, filename), JSON.stringify(data), function(err){
+		if(err){
+			throw err;
+		}
+		console.log("Saved to",filename)
+	});
+
+}
+
 module.exports = {
 
-	save_data : function(data, filename){
-
-		return fs.writeFile(filename, JSON.stringify(data));
-
-	},
 	read_data : function(filename){
 		var data = fs.readFileSync(filename);
 		console.log(JSON.parse(JSON.stringify(data)));
@@ -28,13 +36,17 @@ module.exports = {
 		report_template.Type = report_answers.Type;
 		report_template.Description = report_answers.Description;
 
+		// console.log(report_answers)
 		//Getting Criteria values
 		for(var metric = 0; metric < report_template.Criteria.length; metric++){
 			if(report_answers.hasOwnProperty(report_template.Criteria[metric].fieldName)){
-				report_template.Criteria[metric].value = report_answers[report_template.Criteria[metric].fieldName];
+				report_template.Criteria[metric].Value = report_answers[report_template.Criteria[metric].fieldName];
 			}
 		}
 
+		// Removing spaces from OrganisationName
+		var OrganisationName = report_answers.OrganisationName.replace(/\s/g, '_');
+		save_data(report_template, '../data/'+OrganisationName+'_criteria_answers.json');
 
 		res.redirect('/criteria')
 
