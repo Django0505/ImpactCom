@@ -13,14 +13,18 @@ app.use(bodyParser.json());
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 app.use(session({secret: "bookworms", cookie: {maxAge: 600000}, resave:true, saveUninitialized: false}));
-app.use(express.static('public'));
+app.use("/static", express.static("views"))
+app.use("/static", express.static("."))
 
-var create_program_template = require('./data/funder_criteria')
 
-app.get(["/criteria", "/"], function(req, res, next){
-	res.render("criteria", {create_program_template : create_program_template});
-});
 
+var reportDataCapturer = require('./routes/reportDataCapturer');
+
+app.get(["/criteria", "/"], reportDataCapturer.render_criteria);
+
+app.post("/criteria_post", reportDataCapturer.save_report);
+
+app
 http.listen(3000, function(server){
     console.log('listening on *: 3000');
 });
