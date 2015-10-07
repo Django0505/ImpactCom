@@ -24,7 +24,7 @@ app.get(["/criteria", "/"], reportDataCapturer.render_criteria);
 
 app.post("/criteria_post", reportDataCapturer.save_report);
 
-app
+// app
 http.listen(3000, function(server){
-    console.log('listening on *: 3000');
+    console.log('listening on :::3000');
 });

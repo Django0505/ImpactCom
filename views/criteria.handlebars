@@ -2,25 +2,25 @@
 
 	<h1>HUB METRICS</h1>
 
-	<form action="criteria_post" method="POST">
+	<form action="/criteria_post" method="POST">
 		{{#create_program_template}}
 			<table>
 				<tbody>
 					<tr>
 						<td>Organisation Name</td>
-						<td><input type="text" id="organisation" name="OrganisationName" placeholder="{{OrganisationName}}"></td>
+						<td><input type="text" id="organisation" name="OrganisationName" placeholder="Organisation Name"></td>
 					</tr>
 					<tr>
 						<td>Contact Person</td>
-						<td><input type="text" id="contact" name="ContactPerson" placeholder="{{ContactPerson}}"></td>
+						<td><input type="text" id="contact" name="ContactPerson" placeholder="Contact Person"></td>
 					</tr>
 					<tr>
 						<td>Type of Organisation</td>
 						<td>
 							<select id="type" name="Type">
 								{{#each Type}}
-									<option value="{{.}}">
-										{{.}}
+									<option value="{{this}}">
+										{{this}}
 									</option>
 								{{/each}}
 							</select>
