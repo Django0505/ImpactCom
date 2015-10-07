@@ -17,8 +17,8 @@ app.use(express.static('public'));
 
 var create_program_template = require('./data/funder_criteria')
 
-app.get("/", function(req, res, next){
-	res.render("home", {create_program_template : create_program_template});
+app.get(["/criteria", "/"], function(req, res, next){
+	res.render("criteria", {create_program_template : create_program_template});
 });
 
 http.listen(3000, function(server){
