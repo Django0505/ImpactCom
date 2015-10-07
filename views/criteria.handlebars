@@ -1,0 +1,58 @@
+<div>
+
+	<h1>HUB METRICS</h1>
+
+	<form action="criteria_post" method="POST">
+		{{#create_program_template}}
+			<table>
+				<tbody>
+					<tr>
+						<td>Organisation Name</td>
+						<td><input type="text" id="organisation" name="OrganisationName" placeholder="{{OrganisationName}}"></td>
+					</tr>
+					<tr>
+						<td>Contact Person</td>
+						<td><input type="text" id="contact" name="ContactPerson" placeholder="{{ContactPerson}}"></td>
+					</tr>
+					<tr>
+						<td>Type of Organisation</td>
+						<td>
+							<select id="type" name="Type">
+								{{#each Type}}
+									<option value="{{.}}">
+										{{.}}
+									</option>
+								{{/each}}
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>Description</td>
+						<td><textarea type="text" id="Description" name="Description" placeholder="Description of Organisation"></textarea></td>
+					</tr>
+				</tbody>
+			</table>
+			<br/>
+			<table class="table table-bordered table-striped">
+				<thead>
+					<tr>
+						<th colspan="2">Criteria</th>
+					</tr>
+				</thead>
+				<tbody>
+					{{#each Criteria}}
+						<tr>
+							<td for="{{fieldName}}">{{Indicator}}</td>
+							<td><input type="number" name="{{fieldName}}" id="{{fieldName}}"></td>
+						{{!-- <p>
+							<label for="desc{{fieldName}}">Description</label>
+							<textarea type="text" name="Description" id="desc{{fieldName}}"></textarea>
+						</p> --}}
+						</tr>
+					{{/each}}
+				</tbody>
+			{{/create_program_template}}
+		</table>
+		<input type="submit">
+	</form>
+</div>

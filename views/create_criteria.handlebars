@@ -1,0 +1,43 @@
+<div>
+
+	<h1>CREATE CRITERIA PAGE</h1>
+
+	<form action="create_criteria_post" method="POST">
+			<table>
+				<tbody>
+					<tr>
+						<td><input type="text"></td>
+						<td><input type="text" id="organisation" name="OrganisationName" placeholder="{{OrganisationName}}"></td>
+						<td>
+							<select name="inputType" id="inputType">
+								<option value="text">Text/String</option>
+								<option value="number">Number</option>
+							</select>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<br/>
+			<table class="table table-bordered table-striped">
+				<thead>
+					<tr>
+						<th colspan="2">Criteria</th>
+					</tr>
+					<tr>
+						<th colspan="2">Criteria</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td for="{{fieldName}}">{{Indicator}}</td>
+						<td><input type="number" name="{{fieldName}}" id="{{fieldName}}"></td>
+					{{!-- <p>
+						<label for="desc{{fieldName}}">Description</label>
+						<textarea type="text" name="Description" id="desc{{fieldName}}"></textarea>
+					</p> --}}
+					</tr>
+				</tbody>
+		</table>
+		<input type="submit">
+	</form>
+</div>
