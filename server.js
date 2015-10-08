@@ -34,7 +34,12 @@ app.get("/startup_criteria", function(req, res, next){
 			create_program_template : create_program_template,
 			OrganisationType : "StartUp"
 		});
-})
+});
+
+app.get('/create_hub_criteria', reportCriteriaCreator.get_create_hub_criteria);
+
+app.post('/create_hub_criteria', reportCriteriaCreator.create_hub_criteria);
+
 http.listen(3000, function(server){
     console.log('listening on :::3000');
 });
