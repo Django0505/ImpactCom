@@ -22,14 +22,16 @@ module.exports = {
 	},
 	render_criteria : function(req, res, next){
 
-		var create_program_template = require('../data/funder_criteria');
-		res.render("criteria", {create_program_template : create_program_template});
+		var create_program_template = require('../data/criteria_template');
+		res.render("criteria", {
+				create_program_template : create_program_template,
+				OrganisationType : "HUB"	
+			});
 	},
 	save_report : function(req, res, next){
-		var report_template = require('../data/funder_criteria'),
+		var report_template = require('../data/criteria_template.json'),
 			answers = JSON.parse(JSON.stringify(req.body));
 
-		console.log(answers)
 		var report_answers = {};
 
 		//Create copy of template. Don't wanna mess up template.
@@ -37,7 +39,7 @@ module.exports = {
 			report_answers[key] = report_template[key]; 
 		}
 		for(key in report_template){
-			
+
 			//Getting basic hub details
 			if (key !== "Criteria") {
 				report_answers[key] = answers[key];
@@ -50,6 +52,9 @@ module.exports = {
 
 						report_answers.Criteria[metric].Value = answers[report_answers.Criteria[metric].fieldName];
 					}
+					// else{
+					// 	delete report_answers.Criteria[metric]
+					// }
 				}
 			}
 		}
@@ -60,5 +65,7 @@ module.exports = {
 
 		res.redirect('/criteria')
 
-	}
-}
+	},
+	//Save data function
+	save_data : save_data
+};

@@ -1,6 +1,7 @@
 <div>
-
-	<h1>HUB METRICS</h1>
+	{{#OrganisationType}}
+		<h1>{{OrganisationType}} METRICS</h1>
+	{{/OrganisationType}}
 
 	<form action="/criteria_post" method="POST">
 		{{#create_program_template}}
@@ -41,18 +42,19 @@
 				</thead>
 				<tbody>
 					{{#each Criteria}}
-						<tr>
-							<td><input type="checkbox" name="{{fieldName}}_checkbox">{{Indicator}}</td>
-							<td><input type="number" name="{{fieldName}}" id="{{fieldName}}"></td>
-						{{!-- <p>
-							<label for="desc{{fieldName}}">Description</label>
-							<textarea type="text" name="Description" id="desc{{fieldName}}"></textarea>
-						</p> --}}
+						<tr class="{{fieldName}}">
+							<td class="{{fieldName}}">
+								<input type="checkbox" class="{{fieldName}}"><label>{{Indicator}}</label>
+							</td>
+							<td class="{{fieldName}}">
+								<input type="number" name="{{fieldName}}" class="{{fieldName}}">
+							</td>
 						</tr>
 					{{/each}}
 				</tbody>
 			{{/create_program_template}}
 		</table>
-		<input type="submit">
+		<input type="submit"> 
 	</form>
+	<input class="btn btn-default" id="create_startup_criteria" value="Create Startup Criteria" type="submit">
 </div>
