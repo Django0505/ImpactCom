@@ -8,9 +8,6 @@ module.exports = {
 	},
 	create_hub_criteria : function(req, res, next){
 
-		var metrics = JSON.parse(JSON.stringify(req.body));
-		console.log(metrics);
-
 		res.redirect('/criteria');
 	},
 	create_startup_criteria : function(req, res, next){

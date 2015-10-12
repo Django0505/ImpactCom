@@ -7,20 +7,20 @@
 			<table>
 				<thead>
 					<tr>
-						<th>Details of HUB</th>
+						<th><h3>Details of HUB</h3></th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
+					<tr class="detail-row">
 						<td><input name="fieldName" type="text"></td>
 						<td>
-							<select name="inputType" id="inputType">
+							<select name="inputType1" id="inputType">
 								<option value="text">Text/String</option>
 								<option value="number">Number</option>
 							</select>
 						</td>
 						<td>
-							<input class="btn btn-default" type="submit" value="Add metric">
+							<input class="btn btn-default detail" readonly value="Add">
 						</td>
 					</tr>
 				</tbody>
@@ -36,15 +36,15 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr class="metric">
-						<td><input type="text"></td>
+					<tr class="metric-row">
+						<td><input name="metric" type="text"></td>
 						<td>
-							<select name="inputType" id="inputType">
+							<select name="inputType2" id="inputType">
 								<option value="number">Number</option>
 								<option value="text">Text/String</option>
 							</select>
 						</td>
-						<td><input class="btn btn-default" type="submit" value="Add metric"></td>
+						<td><input class="btn btn-default metric" readonly value="Add metric"></td>
 					</tr>
 					{{!-- <tr>
 						<td for="{{fieldName}}">{{Indicator}}</td>
