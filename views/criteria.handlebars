@@ -1,0 +1,60 @@
+<div>
+	{{#OrganisationType}}
+		<h1>{{OrganisationType}} METRICS</h1>
+	{{/OrganisationType}}
+
+	<form action="/criteria_post" method="POST">
+		{{#create_program_template}}
+			<table>
+				<tbody>
+					<tr>
+						<td>Organisation Name</td>
+						<td><input type="text" id="organisation" name="OrganisationName" placeholder="Organisation Name"></td>
+					</tr>
+					<tr>
+						<td>Contact Person</td>
+						<td><input type="text" id="contact" name="ContactPerson" placeholder="Contact Person"></td>
+					</tr>
+					<tr>
+						<td>Type of Organisation</td>
+						<td>
+							<select id="type" name="Type">
+								{{#each Type}}
+									<option value="{{this}}">
+										{{this}}
+									</option>
+								{{/each}}
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>Description</td>
+						<td><textarea type="text" id="Description" name="Description" placeholder="Description of Organisation"></textarea></td>
+					</tr>
+				</tbody>
+			</table>
+			<br/>
+			<table class="table table-bordered table-striped">
+				<thead>
+					<tr>
+						<th colspan="2">Criteria</th>
+					</tr>
+				</thead>
+				<tbody>
+					{{#each Criteria}}
+						<tr class="{{fieldName}}">
+							<td class="{{fieldName}}">
+								<input type="checkbox" class="{{fieldName}}"><label>{{Indicator}}</label>
+							</td>
+							<td class="{{fieldName}}">
+								<input type="number" name="{{fieldName}}" class="{{fieldName}}">
+							</td>
+						</tr>
+					{{/each}}
+				</tbody>
+			{{/create_program_template}}
+		</table>
+		<input type="submit"> 
+	</form>
+	<input class="btn btn-default" id="create_startup_criteria" value="Create Startup Criteria" type="submit">
+</div>
