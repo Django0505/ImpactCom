@@ -2,17 +2,25 @@
 
 	<h1>CREATE CRITERIA PAGE</h1>
 
-	<form action="create_criteria_post" method="POST">
+	<form action="/create_hub_criteria" method="POST">
+		<br><br><br>
 			<table>
-				<tbody>
+				<thead>
 					<tr>
-						<td><input type="text"></td>
-						<td><input type="text" id="organisation" name="OrganisationName" placeholder="{{OrganisationName}}"></td>
+						<th><h3>Details of HUB</h3></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="detail-row">
+						<td><input name="fieldName" type="text"></td>
 						<td>
-							<select name="inputType" id="inputType">
+							<select name="inputType1" id="inputType">
 								<option value="text">Text/String</option>
 								<option value="number">Number</option>
 							</select>
+						</td>
+						<td>
+							<input class="btn btn-default detail" readonly value="Add">
 						</td>
 					</tr>
 				</tbody>
@@ -21,23 +29,29 @@
 			<table class="table table-bordered table-striped">
 				<thead>
 					<tr>
-						<th colspan="2">Criteria</th>
+						<th></th><th><h1>Criteria</h1></th><th></th>
 					</tr>
 					<tr>
-						<th colspan="2">Criteria</th>
+						<th>Name of Metric</th><th>DataType of Metric</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
+					<tr class="metric-row">
+						<td><input name="metric" type="text"></td>
+						<td>
+							<select name="inputType2" id="inputType">
+								<option value="number">Number</option>
+								<option value="text">Text/String</option>
+							</select>
+						</td>
+						<td><input class="btn btn-default metric" readonly value="Add metric"></td>
+					</tr>
+					{{!-- <tr>
 						<td for="{{fieldName}}">{{Indicator}}</td>
 						<td><input type="number" name="{{fieldName}}" id="{{fieldName}}"></td>
-					{{!-- <p>
-						<label for="desc{{fieldName}}">Description</label>
-						<textarea type="text" name="Description" id="desc{{fieldName}}"></textarea>
-					</p> --}}
-					</tr>
+					</tr> --}}
 				</tbody>
 		</table>
-		<input type="submit">
+		<input type="submit" class="btn btn-default" value="Done ">
 	</form>
 </div>
