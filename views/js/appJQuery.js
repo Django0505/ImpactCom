@@ -25,3 +25,22 @@ $('#create_startup_criteria').click(function(){
 	}
 });
 
+$(".detail").click(function(){
+	if ($('input[name=fieldName]').val()) {
+		$('.detail-row').before('<tr><td><label>'+$('input[name=fieldName]').val()+'</label></td><td><input type='+$('select[name=inputType1]').val()+'></td></tr>');
+		$('input[name=fieldName]').val('')
+	}
+	else{
+		$('input[name=fieldName]').attr('placeholder', 'Enter something...');
+	}
+});
+
+$(".metric").click(function(){
+	if ($('input[name=metric]').val()) {
+		$('.metric-row').before('<tr><td><label>'+$('input[name=metric]').val()+'</label></td><td><input type='+$('select[name=inputType2]').val()+'></td></tr>');
+		$('input[name=metric]').val('')
+	}
+	else{
+		$('input[name=metric]').attr('placeholder', 'Enter something...');
+	}
+});

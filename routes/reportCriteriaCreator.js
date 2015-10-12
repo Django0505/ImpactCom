@@ -2,6 +2,14 @@ module.exports = {
 	get_create_criteria : function(req, res, next){
 		res.render('create_criteria');
 	},
+	get_create_hub_criteria : function(req, res, next){
+
+		res.render('create_criteria');
+	},
+	create_hub_criteria : function(req, res, next){
+
+		res.redirect('/criteria');
+	},
 	create_startup_criteria : function(req, res, next){
 		var startup_criteria = JSON.parse(JSON.stringify(req.body)),
 			reportDataCapturer = require('./reportDataCapturer');
