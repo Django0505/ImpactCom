@@ -2,13 +2,16 @@ var checked_boxes = {};
 
 
 $('input[type=checkbox]').click(function(){
+
+	var checkbox_class_val = $(this).attr('class');
+
 	if ( $(this).checked == false || $(this).checked == undefined) {
 		$(this).checked = true;
-		checked_boxes[$(this).attr('class')] = $(this).attr('class');
 
+		checked_boxes[checkbox_class_val] = checkbox_class_val;
 	} else if( $(this).checked){
 		$(this).checked = false;
-		checked_boxes[$(this).attr('class')] = undefined;
+		delete checked_boxes[checkbox_class_val];
 	};
 });
 
