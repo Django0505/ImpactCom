@@ -13,8 +13,8 @@ app.use(bodyParser.json());
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 app.use(session({secret: "bookworms", cookie: {maxAge: 600000}, resave:true, saveUninitialized: false}));
-app.use("/static", express.static("views"))
-// app.use("/static", express.static("."))
+app.use(express.static("public"))
+app.use("/static", express.static("."))
 
 
 

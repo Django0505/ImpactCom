@@ -1,4 +1,6 @@
 <div>
+
+	<div class="list-group">
 	{{#OrganisationType}}
 		<h1>{{this}} METRICS</h1>
 	{{/OrganisationType}}
@@ -34,7 +36,7 @@
 				</tbody>
 			</table>
 			<br/>
-			<table class="table table-bordered table-striped">
+			<table class="table table-bordered" data-click-to-select="true">
 				<thead>
 					<tr>
 						<th colspan="2">Criteria</th>
@@ -44,7 +46,7 @@
 					{{#each Criteria}}
 						<tr class="{{fieldName}}">
 							<td class="{{fieldName}}">
-								<input type="checkbox" class="{{fieldName}}"><label>{{Indicator}}</label>
+								<input type="checkbox" class="{{fieldName}}"data-checkbox="true"><label>{{Indicator}}</label>
 							</td>
 							<td class="{{fieldName}}">
 								<input type="number" name="{{fieldName}}" class="{{fieldName}}">
@@ -54,7 +56,8 @@
 				</tbody>
 			{{/create_program_template}}
 		</table>
-		<input type="submit"> 
+		<input type="submit" class="btn btn-success"> 
 	</form>
-	<input class="btn btn-default" id="create_startup_criteria" value="Create Startup Criteria" type="submit">
+	<input class="btn btn-outline btn-primary" id="create_startup_criteria" value="Create Startup Criteria" type="submit">
+	</div><!-- list -->
 </div>
