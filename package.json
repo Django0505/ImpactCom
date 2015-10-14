@@ -2,9 +2,9 @@
   "name": "CodeXource",
   "version": "0.0.0",
   "description": "Codex Resources App",
-  "main": "app.js",
+  "main": "gulpfile.js",
   "scripts": {
-    "test": ""
+    "test": "gulp test"
   },
   "author": "tarcode, pholisa, nkosi, mawande, e-manual",
   "license": "BSD-2-Clause",
