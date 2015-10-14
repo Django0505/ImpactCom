@@ -14,12 +14,13 @@ app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 app.use(session({secret: "bookworms", cookie: {maxAge: 600000}, resave:true, saveUninitialized: false}));
 app.use("/static", express.static("views"))
-app.use("/static", express.static("."))
+// app.use("/static", express.static("."))
 
 
 
 var reportDataCapturer = require('./routes/reportDataCapturer'),
-	reportCriteriaCreator = require('./routes/reportCriteriaCreator');
+	reportCriteriaCreator = require('./routes/reportCriteriaCreator'),
+	startupService = require('./routes/startupService');
 
 app.get(["/criteria", "/"], reportDataCapturer.render_criteria);
 
@@ -27,14 +28,7 @@ app.post("/criteria_post", reportDataCapturer.save_report);
 
 app.post("/create_startup_criteria", reportCriteriaCreator.create_startup_criteria);
 
-app.get("/startup_criteria", function(req, res, next){
-	var create_program_template = require('./data/startup_criteria_template.json');
-
-	res.render("criteria", {
-			create_program_template : create_program_template,
-			OrganisationType : "StartUp"
-		});
-});
+app.get("/startup_criteria", startupService.render_criteria);
 
 app.get('/create_hub_criteria', reportCriteriaCreator.get_create_hub_criteria);
 

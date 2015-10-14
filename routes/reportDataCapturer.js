@@ -23,7 +23,7 @@ module.exports = {
 	render_criteria : function(req, res, next){
 
 		var create_program_template = require('../data/criteria_template');
-		res.render("criteria", {
+		return res.render("criteria", {
 				create_program_template : create_program_template,
 				OrganisationType : "HUB"	
 			});
@@ -63,7 +63,7 @@ module.exports = {
 		var OrganisationName = answers.OrganisationName.replace(/\s/g, '_');
 		save_data(report_answers, '../data/'+OrganisationName+'_criteria_answers.json');
 
-		res.redirect('/criteria')
+		return res.redirect('/criteria')
 
 	},
 	//Save data function
