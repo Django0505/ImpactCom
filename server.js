@@ -29,6 +29,7 @@ app.post("/criteria_post", reportDataCapturer.save_report);
 app.post("/create_startup_criteria", reportCriteriaCreator.create_startup_criteria);
 
 app.get("/startup_criteria", startupService.render_criteria);
+app.post("/startup_criteria", startupService.save_report);
 
 app.get('/create_hub_criteria', reportCriteriaCreator.get_create_hub_criteria);
 
