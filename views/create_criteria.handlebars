@@ -2,7 +2,7 @@
 
 	<h1>CREATE CRITERIA PAGE</h1>
 
-	<form action="/create_hub_criteria" method="POST">
+	<form action="/criteria" method="get">
 		<br><br><br>
 			<table>
 				<thead>
@@ -12,9 +12,9 @@
 				</thead>
 				<tbody>
 					<tr class="detail-row">
-						<td><input name="fieldName" type="text"></td>
+						<td><input name="detail" type="text"></td>
 						<td>
-							<select name="inputType1" id="inputType">
+							<select name="detail_type" id="inputType">
 								<option value="text">Text/String</option>
 								<option value="number">Number</option>
 							</select>
@@ -39,20 +39,16 @@
 					<tr class="metric-row">
 						<td><input name="metric" type="text"></td>
 						<td>
-							<select name="inputType2" id="inputType">
+							<select name="metric_type" id="inputType">
 								<option value="number">Number</option>
 								<option value="text">Text/String</option>
 							</select>
 						</td>
 						<td><input class="btn btn-primary metric" readonly value="Add metric"></td>
 					</tr>
-					{{!-- <tr>
-						<td for="{{fieldName}}">{{Indicator}}</td>
-						<td><input type="number" name="{{fieldName}}" id="{{fieldName}}"></td>
-					</tr> --}}
 				</tbody>
 		</table>
-		<input type="submit" class="btn btn-success" value="Done ">
+		<input type="submit" name="create_criteria" class="btn btn-success" value="Done ">
 	</form>
 </div>
 

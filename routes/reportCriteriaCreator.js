@@ -8,7 +8,13 @@ module.exports = {
 	},
 	create_hub_criteria : function(req, res, next){
 
-		res.redirect('/criteria');
+		var hub_criteria_template  =JSON.parse((req.body).criteria_template);
+
+		var reportDataCapturer = require('./reportDataCapturer');
+		
+		reportDataCapturer.save_data(hub_criteria_template, "../data/hub_criteria.json");
+
+		return res.redirect('/criteria');
 	},
 	create_startup_criteria : function(req, res, next){
 		var startup_criteria = JSON.parse(JSON.stringify(req.body)),
@@ -39,6 +45,6 @@ module.exports = {
 		}
 		reportDataCapturer.save_data(startup_criteria_template, '../data/startup_criteria_template.json');
 
-		res.redirect('/criteria');
+		return res.redirect('/criteria');
 	}
 }
