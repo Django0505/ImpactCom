@@ -27,4 +27,3 @@ build/Release
 node_modules
 
 #Directory with sensitive data(Shouldn't be made public)
-data

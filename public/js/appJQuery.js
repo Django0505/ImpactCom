@@ -29,27 +29,20 @@ $('#create_startup_criteria').click(function(){
 
 var criteria_template = {}, det_num = 0, met_num = 0;
 
-//Temporarily store details entered by funder
+// Temporarily store details entered by funder
+criteria_template.Indicator = [];
+
 $(".detail").click(function(){
-	
 	var entered_detail = $('input[name=detail]');
 	var entered_detail_type = $('select[name=detail_type]');
 
-	var det = "detail_"+det_num.toString();
-	
-	criteria_template[det] = {};
-
 	if ( entered_detail.val()) {
+		var det = "detail_"+det_num.toString();
 
-		criteria_template[det].detail = {};
-		criteria_template[det].type = {};
-
-		criteria_template[det].detail = entered_detail.val();
-		criteria_template[det].type = entered_detail_type.val();
-
+		criteria_template.Indicator.push({detail : entered_detail.val(),type : entered_detail_type.val()});
 
 		$('.detail-row').before('<tr><td><label>'+entered_detail.val()+'</label></td><td><input type='+entered_detail_type.val()+'></td></tr>');
-		entered_detail.val('')
+		entered_detail.val('');
 		det_num++;
 	}
 	else{
