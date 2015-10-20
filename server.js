@@ -20,7 +20,8 @@ app.use("/static", express.static("."))
 
 var reportDataCapturer = require('./routes/reportDataCapturer'),
 	reportCriteriaCreator = require('./routes/reportCriteriaCreator'),
-	startupService = require('./routes/startupService');
+	startupService = require('./routes/startupService'),
+	hubService = require('./routes/hubService');;
 
 app.get(["/criteria", "/"], reportDataCapturer.render_criteria);
 
@@ -34,6 +35,8 @@ app.post("/startup_criteria", startupService.save_report);
 app.get('/create_hub_criteria', reportCriteriaCreator.get_create_hub_criteria);
 
 app.post('/create_hub_criteria', reportCriteriaCreator.create_hub_criteria);
+
+app.get('/hub/view_report', hubService.view_report);
 
 http.listen(3000, function(server){
     console.log('listening on :::3000');
