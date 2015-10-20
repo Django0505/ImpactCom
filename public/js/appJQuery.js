@@ -16,10 +16,6 @@ $('input[type=checkbox]').click(function(){
 
 $('#create_startup_criteria').click(function(){
 
-	for (var key in checked_boxes) {
-		alert(key, checked_boxes[key])
-	};
-
 	$.post('/create_startup_criteria', checked_boxes, function(){
 		//Remove checked metrics
 		for(key in checked_boxes){
