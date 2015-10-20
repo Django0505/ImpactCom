@@ -1,0 +1,42 @@
+	<div>
+
+		<div class="list-group">
+		{{#OrganisationType}}
+			<h1>{{this}} METRICS</h1>
+		{{/OrganisationType}}
+
+			{{#create_program_template}}
+				<table>
+					<tbody>
+						{{#each Indicator}}
+							<tr>
+								<td>{{detail}}</td>
+								<td>{{value}}</td>
+							</tr>
+						{{/each}}
+					</tbody>
+				</table>
+				<br/>
+				<table class="table table-bordered" data-click-to-select="true">
+					<thead>
+						<tr>
+							<th colspan="2">Criteria</th>
+						</tr>
+					</thead>
+					<tbody>
+						{{#each Criteria}}
+							<tr class="metric_{{@key}}-row">
+								<td class="metric_{{@key}}-td">
+									<input type="checkbox" class="metric_{{@key}}" data-checkbox="true">
+									<label>{{metric}}</label>
+								</td>
+								<td class="metric_{{@key}}-td">
+									{{value}}>
+								</td>
+							</tr>
+						{{/each}}
+					</tbody>
+				{{/create_program_template}}
+			</table>
+		</div><!-- list -->
+	</div>

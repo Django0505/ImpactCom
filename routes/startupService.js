@@ -1,3 +1,5 @@
+var	reportService = require('./reportService');
+
 module.exports = {
 	render_criteria : function(req, res, next){
 	var create_program_template = require('../data/startup_criteria_template.json');
@@ -10,5 +12,10 @@ module.exports = {
 	save_report : function(req, res, next){
 
 	return res.redirect('/startup_criteria');
+	},
+	view_report : function(req, res, next){
+		var report = reportService.hub_report();
+
+		res.render('view_report', {report : report});
 	}
 }
