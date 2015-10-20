@@ -1,0 +1,1 @@
+{"Indicator":[{"detail":"What is your name?","type":"text"},{"detail":"How old are you?","type":"text"},{"detail":"Cellphone number","type":"text"},{"detail":"Home Address","type":"text"}],"Criteria":[{"metric":"How many ssubjects do you do at school?","type":"number"},{"metric":"Do you like meat?","type":"number"}]}

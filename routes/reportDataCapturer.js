@@ -22,14 +22,14 @@ module.exports = {
 	},
 	render_criteria : function(req, res, next){
 
-		var create_program_template = require('../data/criteria_template');
-		res.render("criteria", {
+		var create_program_template = require('../data/hub_criteria.json');
+		return res.render("criteria", {
 				create_program_template : create_program_template,
 				OrganisationType : "HUB"	
 			});
 	},
 	save_report : function(req, res, next){
-		var report_template = require('../data/criteria_template.json'),
+		var report_template = require('../data/hub_criteria.json'),
 			answers = JSON.parse(JSON.stringify(req.body));
 
 		var report_answers = {};
@@ -60,10 +60,9 @@ module.exports = {
 		}
 
 		// Removing spaces from OrganisationName
-		var OrganisationName = answers.OrganisationName.replace(/\s/g, '_');
-		save_data(report_answers, '../data/'+OrganisationName+'_criteria_answers.json');
+		save_data(report_answers, '../data/criteria_answers.json');
 
-		res.redirect('/criteria')
+		return res.redirect('/criteria')
 
 	},
 	//Save data function
