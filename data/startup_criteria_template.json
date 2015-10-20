@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 {"Indicator":[{"detail":"What is your name?","type":"text"},{"detail":"How old are you?","type":"text"},{"detail":"Cellphone number","type":"text"},{"detail":"Home Address","type":"text"}],"Criteria":[{"metric":"How many ssubjects do you do at school?","type":"number"},{"metric":"Do you like meat?","type":"number"}]}
+=======
+{"OrganisationName":"","ContactPerson":"","Type":["HUB","FUNDER","STARTUP"],"Description":"","Criteria":[{"Indicator":"Number of media appearances","fieldName":"mediaAppearances","Value":"","Description":""},{"Indicator":"Number of knowledge sharing events","fieldName":"knowledgesharingEvents","Value":"","Description":""},{"Indicator":"Number of knowledge products developed","fieldName":"knowledgeProductsDeveloped","Value":"","Description":""}]}
+>>>>>>> 25b9fbc2deadf54c00fbc796500acdd40e29b006
