@@ -37,16 +37,16 @@ app.get('/create_hub_criteria', reportCriteriaCreator.get_create_hub_criteria);
 
 app.post('/create_hub_criteria', reportCriteriaCreator.create_hub_criteria);
 
-app.get('/hubs/view_report/:hub_name', hubService.view_report);
-app.get('/hubs/list_startups', hubService.list_startups);
-app.get('/hubs/list_startups/:startup_name', startupService.view_report);
+app.get('/hubs/:hub_name/view_report', hubService.view_report);
+app.get('/hubs/startups', hubService.list_startups);
+app.get('/hubs/startups/:startup_name', startupService.view_report);
 
 app.get('/startup/view_report/:startup_name', startupService.view_report);
 
 app.get('/hubs', funderService.	list_hubs);
 app.get('/hubs/:hub_name', hubService.view_report);
-app.get('/hubs/:hub_name/list_startups', hubService.list_startups);
-app.get('/hubs/:hub_name/list_startups/:startup_name', startupService.view_report);
+app.get('/hubs/:hub_name/startups', hubService.list_startups);
+app.get('/hubs/:hub_name/startups/:startup_name', startupService.view_report);
 
 http.listen(3000, function(server){
     console.log('listening on :::3000');

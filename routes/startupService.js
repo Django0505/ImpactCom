@@ -1,4 +1,8 @@
-var	reportService = require('./reportService');
+var	notificationService = require('./notificationService'),
+	dataAggregator = require('./dataAggregator'),
+	reportCriteriaCreator = require('./reportCriteriaCreator'),
+	reportDataCapturer = require('./reportDataCapturer'),
+	reportService = require('./reportService');
 
 module.exports = {
 	render_criteria : function(req, res, next){
