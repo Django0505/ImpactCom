@@ -1,4 +1,9 @@
 var fs = require('fs');
+var MongoClient = require('mongodb').MongoClient;
+
+//Connect to mongodb [ConnectionURL]
+var url = 'mongodb://localhost:27017/impact';
+
 
 var save_data = function(data, filename){
 
@@ -22,48 +27,66 @@ module.exports = {
 	},
 	render_criteria : function(req, res, next){
 
-		var create_program_template = require('../data/hub_criteria.json');
-		return res.render("criteria", {
-				create_program_template : create_program_template,
-				OrganisationType : "HUB"	
-			});
+		// var create_program_template = require('../data/hub_criteria.json');
+		 MongoClient.connect(url, function(err, db) {
+            if (err) {
+                console.log(err, "\n");
+            }
+
+            var collection = db.collection('CriteriaCreator');
+            // Insert some documents
+            collection.find({}).toArray(function(err, result) {
+                if (err) {
+                    console.log(err);
+                }
+	            var criteria_temp = result[0].criteria_template;
+
+                db.close();
+                return res.render("criteria", {
+				criteria_template : criteria_temp	
+				});
+            });
+        });
+		
 	},
 	save_report : function(req, res, next){
-		var report_template = require('../data/hub_criteria.json'),
-			answers = JSON.parse(JSON.stringify(req.body));
+		// var report_template = require('../data/hub_criteria.json'),
+			// answers = JSON.parse(JSON.stringify(req.body));
 
-		var report_answers = {};
+	var inputData = JSON.parse(JSON.stringify(req.body));
 
-		//Create copy of template. Don't wanna mess up template.
-		for(key in report_template){
-			report_answers[key] = report_template[key]; 
-		}
-		for(key in report_template){
 
-			//Getting basic hub details
-			if (key !== "Criteria") {
-				report_answers[key] = answers[key];
-			}
-			else{
-				//Getting Criteria values
-				for(var metric = 0; metric < report_answers.Criteria.length; metric++){
+        MongoClient.connect(url, function(err, db) {
+            if (err) {
+                console.log(err, "\n");
+            }
 
-					if(answers.hasOwnProperty(report_answers.Criteria[metric].fieldName)){
+            var collection = db.collection('CriteriaCreator');
+            // Insert some documents
+            collection.insert({
+                Indicator: [{
+                    detail: inputData.detail,
+                    type: inputData.type
+                }],
+                Criteria: [{
+                    metric: inputData.metric,
+                    type: inputData.type
+                }]
+            }, function(err, result) {
 
-						report_answers.Criteria[metric].Value = answers[report_answers.Criteria[metric].fieldName];
-					}
-					// else{
-					// 	delete report_answers.Criteria[metric]
-					// }
-				}
-			}
-		}
+                if (err) {
+                    console.log(err);
+                };
+                // console.log("Inserted new post into the articles collection");
+                // console.log(result);
 
-		// Removing spaces from OrganisationName
-		save_data(report_answers, '../data/criteria_answers.json');
+                db.close();
 
-		return res.redirect('/criteria')
+                return res.redirect('/criteria');
 
+            });
+
+        })
 	},
 	//Save data function
 	save_data : save_data
