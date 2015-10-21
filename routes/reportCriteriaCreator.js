@@ -1,52 +1,111 @@
+var MongoClient = require('mongodb').MongoClient;
+
+//Connect to mongodb [ConnectionURL]
+var url = 'mongodb://localhost:27017/impact';
+
+
+
 module.exports = {
-	get_create_criteria : function(req, res, next){
-		res.render('create_criteria');
-	},
-	get_create_hub_criteria : function(req, res, next){
 
-		res.render('create_criteria');
-	},
-	create_hub_criteria : function(req, res, next){
+    get_create_criteria: function(req, res, next) {
+        MongoClient.connect(url, function(err, db) {
+            if (err) {
+                console.log(err, "\n");
+            }
 
-		var hub_criteria_template  =JSON.parse((req.body).criteria_template);
+            var collection = db.collection('CriteriaCreator');
+            // Insert some documents
+            collection.find().toArray(function(err, result) {
+                if (err) {
+                    console.log(err);
+                }
+                // console.log(result);
 
-		var reportDataCapturer = require('./reportDataCapturer');
-		
-		reportDataCapturer.save_data(hub_criteria_template, "../data/hub_criteria.json");
+                db.close();
+                return res.render('create_criteria');
+            });
+        });
 
-		return res.redirect('/criteria');
-	},
-	create_startup_criteria : function(req, res, next){
-		var startup_criteria = JSON.parse(JSON.stringify(req.body)),
-			reportDataCapturer = require('./reportDataCapturer');
+    },
+    get_create_hub_criteria: function(req, res, next) {
+        MongoClient.connect(url, function(err, db) {
+            if (err) {
+                console.log(err, "\n");
+            }
+
+            var collection = db.collection('CriteriaCreator');
+            // Insert some documents
+            collection.find().toArray(function(err, result) {
+                if (err) {
+                    console.log(err);
+                }
+                // console.log(result);
+
+                db.close();
+                return res.render('create_criteria');
+            });
+        });
+    },
+    create_hub_criteria: function(req, res, next) {
+    		//funder creates hub criteria
+        var inputData = JSON.parse(JSON.stringify(req.body));
+
+        MongoClient.connect(url, function(err, db) {
+            if (err) {
+                console.log(err, "\n");
+            }
+
+            var collection = db.collection('CriteriaCreator');
+            // Insert some documents
+            collection.insert(inputData, function(err, result) {
+
+                if (err) {
+                    console.log(err);
+                };
+                // console.log("Inserted new post into the articles collection");
+                // console.log(result);
+
+                db.close();
+
+                return res.redirect('/criteria');
+
+            });
+
+        })
+    },
+    create_startup_criteria: function(req, res, next) {
+
+        var inputData = JSON.parse(JSON.stringify(req.body));
 
 
-		if (startup_criteria != {}) {
-			var report_template = require('../data/hub_criteria.json'),
-				startup_criteria_template = {};
+        MongoClient.connect(url, function(err, db) {
+            if (err) {
+                console.log(err, "\n");
+            }
 
-			//Create copy of template. Don't wanna mess up template.
-			for(key in report_template){
+            var collection = db.collection('CriteriaCreator');
+            // Insert some documents
+            collection.insert({
+                Indicator: [{
+                    detail: inputData.detail,
+                    type: inputData.type
+                }],
+                Criteria: [{
+                    metric: inputData.metric,
+                    type: inputData.type
+                }]
+            }, function(err, result) {
 
-				if (key != 'Criteria'){
-					startup_criteria_template[key] = report_template[key]; 
-				}
-				else{
-					startup_criteria_template["Criteria"] = [];
+                if (err) {
+                    console.log(err);
+                };
+                // console.log("Inserted new post into the articles collection");
+                // console.log(result);
 
-					for(metric in startup_criteria){
-						for(k = 0; k < report_template["Criteria"].length; k++){
-							var num = Number(/\d+/.exec(metric)[0]);
-							if(k === num){
-								startup_criteria_template["Criteria"].push(report_template["Criteria"][k]);
-							}
-						}
-					}
-				}
-			}
-		}
-		reportDataCapturer.save_data(startup_criteria_template, '../data/startup_criteria_template.json');
+                db.close();
 
-		return res.redirect('/criteria');
-	}
+                return res.redirect('/criteria');
+            });
+        });
+    }
 }
