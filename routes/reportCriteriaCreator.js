@@ -3,8 +3,6 @@ var MongoClient = require('mongodb').MongoClient;
 //Connect to mongodb [ConnectionURL]
 var url = 'mongodb://localhost:27017/impact';
 
-
-
 module.exports = {
 
     get_create_criteria: function(req, res, next) {
@@ -42,7 +40,7 @@ module.exports = {
                 // console.log(result);
 
                 db.close();
-                return res.render('create_criteria');
+                return res.render('create_criteria', {criteria_template : result});
             });
         });
     },

@@ -13,5 +13,6 @@ module.exports = {
 	},
 	list_startups : function(req, res, next){
 		res.redirect('/criteria')
-	}
+	},
+	create_startup_criteria : reportCriteriaCreator.create_startup_criteria
 }

@@ -19,8 +19,8 @@ app.use("/static", express.static("."));
 
 
 var reportDataCapturer = require('./routes/reportDataCapturer'),
-	reportCriteriaCreator = require('./routes/reportCriteriaCreator'),
-	startupService = require('./routes/startupService'),
+	reportCriteriaCreator = require('./routes/reportCriteriaCreator');
+var	startupService = require('./routes/startupService'),
 	hubService = require('./routes/hubService'),
 	funderService = require('./routes/fundService');
 
@@ -28,7 +28,7 @@ app.get(["/criteria", "/"], reportDataCapturer.render_criteria);
 
 app.post("/criteria_post", reportDataCapturer.save_report);
 
-app.post("/create_startup_criteria", reportCriteriaCreator.create_startup_criteria);
+app.post("/create_startup_criteria", hubService.create_startup_criteria);
 
 app.get("/startup_criteria", startupService.render_criteria);
 app.post("/startup_criteria", startupService.save_report);
