@@ -6,15 +6,15 @@
 		{{/OrganisationType}}
 
 		<form action="/criteria_post" method="POST">
-			{{#create_program_template}}
+			{{#each criteria_template}}
 				<table>
 					<tbody>
-						{{#each Indicator}}
+						{{#Indicator}}
 							<tr>
 								<td>{{detail}}</td>
 								<td><input type="{{type}}" id="indicator_{{@key}}" name="indicator_{{@key}}" placeholder="{{detail}}"></td>
 							</tr>
-						{{/each}}
+						{{/Indicator}}
 					</tbody>
 				</table>
 				<br/>
@@ -25,7 +25,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						{{#each Criteria}}
+						{{#Criteria}}
 							<tr class="metric_{{@key}}">
 								<td class="metric_{{@key}}-td">
 									<input type="checkbox" class="metric_{{@key}}" data-checkbox="true">
@@ -35,9 +35,9 @@
 									<input type="{{type}}" name="metric_{{@key}}" class="metric_{{@key}}">
 								</td>
 							</tr>
-						{{/each}}
+						{{/Criteria}}
 					</tbody>
-				{{/create_program_template}}
+				{{/each}}
 			</table>
 			<input type="submit" class="btn btn-success"> 
 		</form>

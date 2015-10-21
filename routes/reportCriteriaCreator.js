@@ -1,50 +1,111 @@
+var MongoClient = require('mongodb').MongoClient;
+
+//Connect to mongodb [ConnectionURL]
+var url = 'mongodb://localhost:27017/impact';
+
+
+
 module.exports = {
-	get_create_criteria : function(req, res, next){
-		res.render('create_criteria');
-	},
-	get_create_hub_criteria : function(req, res, next){
+    get_create_criteria: function(req, res, next) {
+        MongoClient.connect(url, function(err, db) {
+            if (err) {
+                console.log(err, "\n");
+            }
 
-		res.render('create_criteria');
-	},
-	create_hub_criteria : function(req, res, next){
+            var collection = db.collection('CriteriaCreator');
+            // Insert some documents
+            collection.find().toArray(function(err, result) {
+                if (err) {
+                    console.log(err);
+                }
+                // console.log(result);
 
-		var hub_criteria_template  =JSON.parse((req.body).criteria_template);
+                db.close();
+                return res.render('create_criteria');
+            });
+        });
 
-		var reportDataCapturer = require('./reportDataCapturer');
-		
-		reportDataCapturer.save_data(hub_criteria_template, "../data/hub_criteria.json");
+    },
+    get_create_hub_criteria: function(req, res, next) {
+        MongoClient.connect(url, function(err, db) {
+            if (err) {
+                console.log(err, "\n");
+            }
 
-		return res.redirect('/criteria');
-	},
-	create_startup_criteria : function(req, res, next){
-		var startup_criteria = JSON.parse(JSON.stringify(req.body)),
-			reportDataCapturer = require('./reportDataCapturer');
+            var collection = db.collection('CriteriaCreator');
+            // Insert some documents
+            collection.find().toArray(function(err, result) {
+                if (err) {
+                    console.log(err);
+                }
+                // console.log(result);
 
-		if (startup_criteria != {}) {
-			var report_template = require('../data/hub_criteria.json'),
-				startup_criteria_template = {};
+                db.close();
+                return res.render('create_criteria');
+            });
+        });
+    },
+    create_hub_criteria: function(req, res, next) {
+    		//funder creates hub criteria
+        var inputData = JSON.parse(JSON.stringify(req.body));
 
-			//Create copy of template. Don't wanna mess up template.
-			for(key in report_template){
-				// if (key != 'Criteria'){
-					startup_criteria_template[key] = report_template[key]; 
-				// }
-				// else{
-				// 	startup_criteria_template["Criteria"] = [];
+        MongoClient.connect(url, function(err, db) {
+            if (err) {
+                console.log(err, "\n");
+            }
 
-				// 	for(k = 0; k < report_template["Criteria"].length; k++){
-				// 		for(metric in startup_criteria){
+            var collection = db.collection('CriteriaCreator');
+            // Insert some documents
+            collection.insert(inputData, function(err, result) {
 
-				// 			if(report_template["Criteria"][k]["fieldName"] == startup_criteria[metric]){
-				// 				startup_criteria_template["Criteria"].push(report_template["Criteria"][k]);
-				// 			}
-				// 		}
-				// 	}
-				// }
-			}
-		}
-		reportDataCapturer.save_data(startup_criteria_template, '../data/startup_criteria_template.json');
+                if (err) {
+                    console.log(err);
+                };
+                // console.log("Inserted new post into the articles collection");
+                // console.log(result);
 
-		return res.redirect('/criteria');
-	}
+                db.close();
+
+                return res.redirect('/criteria');
+
+            });
+
+        })
+    },
+    create_startup_criteria: function(req, res, next) {
+
+        var inputData = JSON.parse(JSON.stringify(req.body));
+
+
+        MongoClient.connect(url, function(err, db) {
+            if (err) {
+                console.log(err, "\n");
+            }
+
+            var collection = db.collection('CriteriaCreator');
+            // Insert some documents
+            collection.insert({
+                Indicator: [{
+                    detail: inputData.detail,
+                    type: inputData.type
+                }],
+                Criteria: [{
+                    metric: inputData.metric,
+                    type: inputData.type
+                }]
+            }, function(err, result) {
+
+                if (err) {
+                    console.log(err);
+                };
+                // console.log("Inserted new post into the articles collection");
+                // console.log(result);
+
+                db.close();
+
+                return res.redirect('/criteria');
+            });
+        });
+    }
+
 }
