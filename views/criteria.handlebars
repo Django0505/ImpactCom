@@ -28,8 +28,10 @@
 						{{#Criteria}}
 							<tr class="metric_{{@key}}">
 								<td class="metric_{{@key}}-td">
-									<input type="checkbox" class="metric_{{@key}}" data-checkbox="true">
-									<label>{{metric}}</label>
+									<label>
+										<input type="checkbox" class="metric_{{@key}}" data-checkbox="true">
+										{{metric}}
+									</label>
 								</td>
 								<td class="metric_{{@key}}-td">
 									<input type="{{type}}" name="metric_{{@key}}" class="metric_{{@key}}">

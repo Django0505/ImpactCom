@@ -6,6 +6,7 @@ var url = 'mongodb://localhost:27017/impact';
 
 
 module.exports = {
+
     get_create_criteria: function(req, res, next) {
         MongoClient.connect(url, function(err, db) {
             if (err) {
@@ -107,5 +108,4 @@ module.exports = {
             });
         });
     }
-
 }
