@@ -6,5 +6,8 @@ module.exports = {
 		var report = reportService.hub_report();
 
 		res.render('view_report', {report : report});
+	},
+	list_startups : function(req, res, next){
+		res.redirect('/criteria')
 	}
 }
