@@ -6,7 +6,7 @@
 		{{/OrganisationType}}
 
 		<form action="/criteria_post" method="POST">
-			{{#each criteria_template}}
+			{{#criteria_template}}
 				<table>
 					<tbody>
 						{{#Indicator}}
@@ -25,7 +25,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						{{#Criteria}}
+						{{#each Criteria}}
 							<tr class="metric_{{@key}}">
 								<td class="metric_{{@key}}-td">
 									<label>
@@ -37,9 +37,9 @@
 									<input type="{{type}}" name="metric_{{@key}}" class="metric_{{@key}}">
 								</td>
 							</tr>
-						{{/Criteria}}
+						{{/each}}
 					</tbody>
-				{{/each}}
+			{{/criteria_template}}
 			</table>
 			<input type="submit" class="btn btn-success"> 
 		</form>

@@ -46,7 +46,7 @@ app.get('/startup/view_report/:startup_name', startupService.view_report);
 app.get('/hubs', funderService.	list_hubs);
 app.get('/hubs/:hub_name', hubService.view_report);
 app.get('/hubs/:hub_name/startups', hubService.list_startups);
-app.get('/hubs/:hub_name/startups/:startup_name', startupService.view_report);
+app.get('/hubs/:hub_name/startups/startup_name', startupService.view_report);
 
 http.listen(3000, function(server){
     console.log('listening on :::3000');

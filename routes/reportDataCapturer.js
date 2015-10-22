@@ -39,7 +39,8 @@ module.exports = {
                 if (err) {
                     console.log(err);
                 }
-	            var criteria_temp = result[0].criteria_template;
+	            var criteria_temp = JSON.parse(result[0].criteria_template);
+                console.log
 
                 db.close();
                 return res.render("criteria", {
