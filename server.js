@@ -20,7 +20,7 @@ app.use("/static", express.static("."));
 
 var reportDataCapturer = require('./routes/reportDataCapturer'),
 	reportCriteriaCreator = require('./routes/reportCriteriaCreator');
-var	startupService = require('./routes/startupService'),
+var	startupService = require('./routes/startupService');
 	hubService = require('./routes/hubService'),
 	funderService = require('./routes/fundService');
 
