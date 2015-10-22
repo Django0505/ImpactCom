@@ -92,7 +92,8 @@ module.exports = {
 
                 var startup_criteria_template = {
                     "Indicator" : [],
-                    "Criteria" : []
+                    "Criteria" : [],
+                    "For" : "startups"
                 };
 
                 for(k = 0; k < criteria_template["Indicator"].length; k++){
