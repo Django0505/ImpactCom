@@ -5,6 +5,7 @@
 			<h1>{{this}} METRICS</h1>
 		{{/OrganisationType}}
 
+<<<<<<< Updated upstream
 		<form action="/criteria_post" method="POST">
 			{{#each criteria_template}}
 				<table>
@@ -46,3 +47,63 @@
 		<input class="btn btn-outline btn-primary" id="create_startup_criteria" value="Create Startup Criteria" type="submit">
 		</div><!-- list -->
 	</div>
+=======
+	<form action="/criteria_post" method="POST">
+		{{#create_program_template}}
+		<div class = "table-responsive">
+			<table>
+				<tbody>
+					<tr>
+						<td>Organisation Name</td>
+						<td><input type="text" id="organisation" name="OrganisationName" placeholder="Organisation Name" required></td>
+					</tr>
+					<tr>
+						<td>Contact Person</td>
+						<td><input type="text" id="contact" name="ContactPerson" placeholder="Contact Person" required></td>
+					</tr>
+					<tr>
+						<td>Type of Organisation</td>
+						<td>
+							<select id="type" name="Type">
+								{{#each Type}}
+									<option value="{{this}}">
+										{{this}}
+									</option>
+								{{/each}}
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>Description</td>
+						<td><textarea type="text" id="Description" name="Description" placeholder="Description of Organisation" required></textarea></td>
+					</tr>
+				</tbody>
+			</table>
+			<br/>
+			<table class="table table-bordered" data-click-to-select="true">
+				<thead>
+					<tr>
+						<th colspan="2">Criteria</th>
+					</tr>
+				</thead>
+				<tbody>
+					{{#each Criteria}}
+						<tr class="{{fieldName}}">
+							<td class="{{fieldName}}">
+								<input type="checkbox" class="{{fieldName}}"data-checkbox="true"><label>{{Indicator}}</label>
+							</td>
+							<td class="{{fieldName}}">
+								<input type="number" name="{{fieldName}}" class="{{fieldName}}" required>
+							</td>
+						</tr>
+					{{/each}}
+				</tbody>
+			{{/create_program_template}}
+		</table>
+		<div><!-- responsive -->
+		<input type="submit" class="btn btn-success"> 
+	</form>
+	<input class="btn btn-outline btn-primary" id="create_startup_criteria" value="Create Startup Criteria" type="submit">
+	</div><!-- list -->
+</div>
+>>>>>>> Stashed changes
