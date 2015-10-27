@@ -6,6 +6,16 @@ var	notificationService = require('./notificationService'),
 	
 module.exports = {
 	list_hubs : function(req, res, next){
-		return res.redirect('/create_hub_criteria');
+		var hubs = [
+					{hub_name : "mlab"},
+					{hub_name : "codex"},
+					{hub_name : "mlab"},
+					{hub_name : "codex"}
+					];
+
+		return res.render('list_hubs', {hubs : hubs});
+	},
+	funder_page : function(req, res, next){
+		res.render('funder_page');
 	}
 }

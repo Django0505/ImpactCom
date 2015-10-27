@@ -4,7 +4,6 @@ var MongoClient = require('mongodb').MongoClient;
 //Connect to mongodb [ConnectionURL]
 var url = 'mongodb://localhost:27017/impact';
 
-
 var save_data = function(data, filename){
 
 	var path = require('path');
@@ -28,7 +27,7 @@ module.exports = {
 	render_criteria : function(req, res, next){
 
 		// var create_program_template = require('../data/hub_criteria.json');
-		 MongoClient.connect(url, function(err, db) {
+		MongoClient.connect(url, function(err, db) {
             if (err) {
                 console.log(err, "\n");
             }
@@ -39,8 +38,9 @@ module.exports = {
                 if (err) {
                     console.log(err);
                 }
-	            var criteria_temp = result[0] ? JSON.parse(result[0].criteria_template) : {};
-                console.log
+                var last_index = result.length-1;
+                console.log(last_index);
+	            var criteria_temp = result[last_index] ? JSON.parse(result[last_index].criteria_template) : {};
 
                 db.close();
                 return res.render("criteria", {
@@ -48,13 +48,13 @@ module.exports = {
 				});
             });
         });
-		
 	},
 	save_report : function(req, res, next){
 		// var report_template = require('../data/hub_criteria.json'),
 			// answers = JSON.parse(JSON.stringify(req.body));
 
-	var inputData = JSON.parse(JSON.stringify(req.body));
+    	var inputData = JSON.parse(JSON.stringify(req.body));
+            inputData["Organisation"] = "mlab"
 
 
         MongoClient.connect(url, function(err, db) {
@@ -62,32 +62,43 @@ module.exports = {
                 console.log(err, "\n");
             }
 
-            var collection = db.collection('CriteriaCreator');
+            var CriteriaReports = db.collection('CriteriaReports'),
+                CriteriaCreator = db.collection('CriteriaCreator');
             // Insert some documents
-            collection.insert({
-                Indicator: [{
-                    detail: inputData.detail,
-                    type: inputData.type
-                }],
-                Criteria: [{
-                    metric: inputData.metric,
-                    type: inputData.type
-                }]
-            }, function(err, result) {
-
+            
+            CriteriaCreator.find({"For" : {$nin : ["startups"]}}, function(err, template) {
                 if (err) {
                     console.log(err);
                 };
-                // console.log("Inserted new post into the articles collection");
-                // console.log(result);
 
-                db.close();
+                template = JSON.parse(template.criteria_template);
+                for(key in inputData){
+                    if (/metric_/.exec(key)) {
+                        var num = Number(/\d+/.exec(key)[0]);
 
-                return res.redirect('/criteria');
+                        template["Criteria"][num].value = inputData[key];
+                    }
+                    else if (/indicator_/.exec(key)){
+                        var num = Number(/\d+/.exec(key)[0]);
+
+                        template["Indicator"][num].value = inputData[key];
+                    };
+                }
+
+                CriteriaReports.insert(template, function(err, result) {
+
+                    if (err) {
+                        console.log(err);
+                    };
+
+                    db.close();
+
+                    return res.redirect('/criteria');
+
+                });
 
             });
-
-        })
+        });
 	},
 	//Save data function
 	save_data : save_data

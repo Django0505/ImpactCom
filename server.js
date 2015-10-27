@@ -24,7 +24,13 @@ var	startupService = require('./routes/startupService');
 	hubService = require('./routes/hubService'),
 	funderService = require('./routes/fundService');
 
-app.get(["/criteria", "/"], reportDataCapturer.render_criteria);
+
+app.get(['/', '/home'], function(req, res, next){
+	res.render('home');
+})
+
+app.get("/criteria", reportDataCapturer.render_criteria);
+app.get("/funder_page", funderService.funder_page);
 
 app.post("/criteria_post", reportDataCapturer.save_report);
 
