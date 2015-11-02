@@ -15,7 +15,7 @@
     "express-session": "~1.11.3",
     "gulp": "^3.9.0",
     "gulp-qunit": "^1.2.1",
-    "mongodb": "^2.0.46",
+    "mongodb": "^2.0.47",
     "qunit": "^0.7.7"
   }
 }
