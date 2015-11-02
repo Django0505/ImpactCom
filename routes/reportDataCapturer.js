@@ -26,21 +26,19 @@ module.exports = {
 	},
 	render_criteria : function(req, res, next){
 
-		// var create_program_template = require('../data/hub_criteria.json');
 		MongoClient.connect(url, function(err, db) {
             if (err) {
                 console.log(err, "\n");
             }
 
-            var collection = db.collection('CriteriaCreator');
+            var CriteriaCreator = db.collection('CriteriaCreator');
             // Insert some documents
-            collection.find({}).toArray(function(err, result) {
+            CriteriaCreator.find({}).toArray(function(err, result) {
                 if (err) {
                     console.log(err);
                 }
                 var last_index = result.length-1;
-                console.log(last_index);
-	            var criteria_temp = result[last_index] ? JSON.parse(result[last_index].criteria_template) : {};
+	            var criteria_temp = result[last_index].criteria_template ? JSON.parse(result[last_index].criteria_template) : {};
 
                 db.close();
                 return res.render("criteria", {
@@ -70,8 +68,9 @@ module.exports = {
                 if (err) {
                     console.log(err);
                 };
-
-                template = JSON.parse(template.criteria_template);
+                // console.log("template", JSON.parse(template[0]))
+                template = (template.criteria_template)? JSON.parse(template.criteria_template) : {};
+                
                 for(key in inputData){
                     if (/metric_/.exec(key)) {
                         var num = Number(/\d+/.exec(key)[0]);

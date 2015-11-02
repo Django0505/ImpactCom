@@ -16,6 +16,17 @@ module.exports = {
 		return res.render('list_hubs', {hubs : hubs});
 	},
 	funder_page : function(req, res, next){
-		res.render('funder_page');
+		var menu = [
+						{
+							link :'/hubs',
+							label : "List Hubs"
+						},
+						{
+							link : "/create_hub_criteria",
+							label : "Create Criteria for Hubs"
+						}
+					];
+
+		res.render('menu_page', {menu : menu});
 	}
 }

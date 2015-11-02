@@ -43,6 +43,7 @@ app.get('/create_hub_criteria', reportCriteriaCreator.get_create_hub_criteria);
 
 app.post('/create_hub_criteria', reportCriteriaCreator.create_hub_criteria);
 
+app.get('/hub_page', hubService.hub_page)
 app.get('/hubs/:hub_name/view_report', hubService.view_report);
 app.get('/hubs/startups', hubService.list_startups);
 app.get('/hubs/startups/:startup_name', startupService.view_report);

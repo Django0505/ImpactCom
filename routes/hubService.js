@@ -20,7 +20,7 @@ module.exports = {
 
 	        var collection = db.collection('CriteriaReports');
 	        // Insert some documents
-	        collection.find({}).toArray(function(err, result) {
+	        collection.find({"Organisation" : req.params.hub_name}).toArray(function(err, result) {
 	            if (err) {
 	                console.log(err);
 	            }
@@ -33,6 +33,27 @@ module.exports = {
 	},
 	list_startups : function(req, res, next){
 		res.redirect('/criteria')
+	},
+
+	create_startup_criteria : reportCriteriaCreator.create_startup_criteria,
+
+	hub_page : function(req, res, next){
+		var menu = [
+						{
+							link :'/hubs/mlab/startups',
+							label : "List Startups"
+						},
+						{
+							link : "/hubs/mlab",
+							label : "View my report"
+						},
+						{
+							link : "/criteria",
+							label : "Report"
+						}
+					];
+
+		res.render('menu_page', {menu : menu});
 	},
 	create_startup_criteria : reportCriteriaCreator.create_startup_criteria
 }

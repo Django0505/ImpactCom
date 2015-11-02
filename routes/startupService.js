@@ -23,7 +23,8 @@ module.exports = {
                     console.log(err);
                 }
 
-	            var create_template = result[0];
+                console.log(JSON.stringify(result))
+	            var create_template = result[0] ? JSON.parse(result[0]) : {};
 
                 db.close();
 

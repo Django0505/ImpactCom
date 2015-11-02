@@ -9,12 +9,12 @@
 			{{#criteria_template}}
 				<table>
 					<tbody>
-						{{#each Indicator}}
+						{{#Indicator}}
 							<tr>
 								<td>{{detail}}</td>
 								<td><input type="{{type}}" id="indicator_{{@key}}" name="indicator_{{@key}}" placeholder="{{detail}}"></td>
 							</tr>
-						{{/each}}
+						{{/Indicator}}
 					</tbody>
 				</table>
 				<br/>
