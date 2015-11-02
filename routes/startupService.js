@@ -16,15 +16,15 @@ module.exports = {
                 console.log(err, "\n");
             }
 
-            var collection = db.collection('CriteriaCreator');
+            var CriteriaCreator = db.collection('CriteriaCreator');
             // Insert some documents
-            collection.find({"For" : "startups"}).toArray(function(err, result) {
+            CriteriaCreator.find({"For" : "startups"}).toArray(function(err, result) {
                 if (err) {
                     console.log(err);
                 }
 
-                console.log(JSON.stringify(result))
-	            var create_template = result[0] ? JSON.parse(result[0]) : {};
+                console.log(JSON.stringify(result[result.length-1]));
+	            var create_template = result[result.length-1] ? JSON.parse(JSON.stringify(result[result.length-1])) : {};
 
                 db.close();
 

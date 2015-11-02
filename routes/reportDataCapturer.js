@@ -62,14 +62,13 @@ module.exports = {
 
             var CriteriaReports = db.collection('CriteriaReports'),
                 CriteriaCreator = db.collection('CriteriaCreator');
-            // Insert some documents
             
-            CriteriaCreator.find({"For" : {$nin : ["startups"]}}, function(err, template) {
+            CriteriaCreator.find({"For" : {$nin : ["startups"]}}).toArray(function(err, template) {
                 if (err) {
                     console.log(err);
                 };
-                // console.log("template", JSON.parse(template[0]))
-                template = (template.criteria_template)? JSON.parse(template.criteria_template) : {};
+
+                template = (template[template.length-1])? JSON.parse(template[template.length-1].criteria_template) : {};
                     
                 for(key in inputData){
                     if (/metric_/.exec(key)) {
