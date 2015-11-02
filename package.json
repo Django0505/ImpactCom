@@ -1,12 +1,12 @@
 {
-  "name": "CodeXource",
+  "name": "ImpactCom",
   "version": "0.0.0",
-  "description": "Codex Resources App",
+  "description": "Impact Reporting Tool",
   "main": "gulpfile.js",
   "scripts": {
     "test": "gulp test"
   },
-  "author": "tarcode, pholisa, nkosi, mawande, e-manual",
+  "author": "mawande, e-manual",
   "license": "BSD-2-Clause",
   "dependencies": {
     "body-parser": "^1.14.0",

@@ -70,7 +70,7 @@ module.exports = {
                 };
                 // console.log("template", JSON.parse(template[0]))
                 template = (template.criteria_template)? JSON.parse(template.criteria_template) : {};
-                
+                    
                 for(key in inputData){
                     if (/metric_/.exec(key)) {
                         var num = Number(/\d+/.exec(key)[0]);
