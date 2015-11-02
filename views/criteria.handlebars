@@ -1,0 +1,48 @@
+	<div>
+
+		<div class="list-group">
+		{{#OrganisationType}}
+			<h1>{{this}} METRICS</h1>
+		{{/OrganisationType}}
+
+		<form action="/criteria_post" method="POST">
+			{{#criteria_template}}
+				<table>
+					<tbody>
+						{{#Indicator}}
+							<tr>
+								<td>{{detail}}</td>
+								<td><input type="{{type}}" id="indicator_{{@key}}" name="indicator_{{@key}}" placeholder="{{detail}}"></td>
+							</tr>
+						{{/Indicator}}
+					</tbody>
+				</table>
+				<br/>
+				<table class="table table-bordered" data-click-to-select="true">
+					<thead>
+						<tr>
+							<th colspan="2">Criteria</th>
+						</tr>
+					</thead>
+					<tbody>
+						{{#each Criteria}}
+							<tr class="metric_{{@key}}">
+								<td class="metric_{{@key}}-td">
+									<label>
+										<input type="checkbox" class="metric_{{@key}}" data-checkbox="true">
+										{{metric}}
+									</label>
+								</td>
+								<td class="metric_{{@key}}-td">
+									<input type="{{type}}" name="metric_{{@key}}" class="metric_{{@key}}">
+								</td>
+							</tr>
+						{{/each}}
+					</tbody>
+			{{/criteria_template}}
+			</table>
+			<input type="submit" class="btn btn-success"> 
+		</form>
+		<input class="btn btn-outline btn-primary" id="create_startup_criteria" value="Create Startup Criteria" type="submit">
+		</div><!-- list -->
+	</div>
