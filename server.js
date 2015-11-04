@@ -48,6 +48,7 @@ app.get('/hubs/:hub_name/view_report', hubService.view_report);
 app.get('/hubs/startups', hubService.list_startups);
 app.get('/hubs/startups/:startup_name', startupService.view_report);
 
+app.get('/startup_page', startupService.startup_page);
 app.get('/startup/view_report/:startup_name', startupService.view_report);
 
 app.get('/hubs', funderService.	list_hubs);
@@ -55,6 +56,10 @@ app.get('/hubs/:hub_name', hubService.view_report);
 app.get('/hubs/:hub_name/startups', hubService.list_startups);
 app.get('/hubs/:hub_name/startups/startup_name', startupService.view_report);
 
+//Test startup new UI
+app.get('/test_startup_ui', function(req, res, next){
+	res.render('startup_page')
+})
 http.listen(3000, function(server){
     console.log('listening on :::3000');
 });
