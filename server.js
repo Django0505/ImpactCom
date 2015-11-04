@@ -51,11 +51,14 @@ app.get('/hubs/startups/:startup_name', startupService.view_report);
 app.get('/startup_page', startupService.startup_page);
 app.get('/startup/view_report/:startup_name', startupService.view_report);
 
-app.get('/hubs', funderService.	list_hubs);
+app.get('/hubs', funderService.list_hubs);
 app.get('/hubs/:hub_name', hubService.view_report);
 app.get('/hubs/:hub_name/startups', hubService.list_startups);
 app.get('/hubs/:hub_name/startups/startup_name', startupService.view_report);
 
+app.get('/funder_new', function(req,res, next){
+	res.render('funder')
+})
 http.listen(3000, function(server){
     console.log('listening on :::3000');
 });
