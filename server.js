@@ -59,7 +59,8 @@ app.get('/hubs/:hub_name/startups/startup_name', startupService.view_report);
 //Test startup new UI
 app.get('/test_startup_ui', function(req, res, next){
 	res.render('startup_page')
-})
+});
+
 http.listen(3000, function(server){
     console.log('listening on :::3000');
 });
