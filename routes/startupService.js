@@ -48,17 +48,7 @@ module.exports = {
         });
 	},
     startup_page : function(req, res, next){
-        var menu = [
-                    {
-                        label : "View my last report",
-                        link : "/hubs/startups/startup_name"
-                    },
-                    {
-                        label   : "Report filling",
-                        link    : "/startup_criteria"
-                    }
-                ]
 
-        res.render('menu_page', {menu : menu})
+        res.render('startup_page')
     }
 }
