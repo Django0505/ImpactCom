@@ -48,6 +48,7 @@ app.get('/hubs/:hub_name/view_report', hubService.view_report);
 app.get('/hubs/startups', hubService.list_startups);
 app.get('/hubs/startups/:startup_name', startupService.view_report);
 
+app.get('/startup_page', startupService.startup_page);
 app.get('/startup/view_report/:startup_name', startupService.view_report);
 
 app.get('/hubs', funderService.	list_hubs);

@@ -40,8 +40,15 @@ module.exports = {
 	return res.redirect('/startup_criteria');
 	},
 	view_report : function(req, res, next){
-		var report = reportService.hub_report();
+		var report = reportService.get_report({});
 
-		res.render('view_report', {report : report});
-	}
+		res.render('view_report', {
+            report : report,
+            OrganisationType : "StartUp"
+        });
+	},
+    startup_page : function(req, res, next){
+
+        res.render('startup_page')
+    }
 }
