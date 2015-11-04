@@ -19,14 +19,22 @@ app.use("/static", express.static("."));
 
 
 var reportDataCapturer = require('./routes/reportDataCapturer'),
-	reportCriteriaCreator = require('./routes/reportCriteriaCreator'),
-	startupService = require('./routes/startupService');
+	reportCriteriaCreator = require('./routes/reportCriteriaCreator');
+var	startupService = require('./routes/startupService');
+	hubService = require('./routes/hubService'),
+	funderService = require('./routes/fundService');
 
-app.get(["/criteria", "/"], reportDataCapturer.render_criteria);
+
+app.get(['/', '/home'], function(req, res, next){
+	res.render('home');
+})
+
+app.get("/criteria", reportDataCapturer.render_criteria);
+app.get("/funder_page", funderService.funder_page);
 
 app.post("/criteria_post", reportDataCapturer.save_report);
 
-app.post("/create_startup_criteria", reportCriteriaCreator.create_startup_criteria);
+app.post("/create_startup_criteria", hubService.create_startup_criteria);
 
 app.get("/startup_criteria", startupService.render_criteria);
 app.post("/startup_criteria", startupService.save_report);
@@ -35,6 +43,21 @@ app.get('/create_hub_criteria', reportCriteriaCreator.get_create_hub_criteria);
 
 app.post('/create_hub_criteria', reportCriteriaCreator.create_hub_criteria);
 
+app.get('/hub_page', hubService.hub_page)
+app.get('/hubs/:hub_name/view_report', hubService.view_report);
+app.get('/hubs/startups', hubService.list_startups);
+app.get('/hubs/startups/:startup_name', startupService.view_report);
+
+app.get('/startup/view_report/:startup_name', startupService.view_report);
+
+app.get('/hubs', funderService.list_hubs);
+app.get('/hubs/:hub_name', hubService.view_report);
+app.get('/hubs/:hub_name/startups', hubService.list_startups);
+app.get('/hubs/:hub_name/startups/startup_name', startupService.view_report);
+
+app.get('/funder_new', function(req,res, next){
+	res.render('funder')
+})
 http.listen(3000, function(server){
     console.log('listening on :::3000');
 });

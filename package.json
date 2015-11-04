@@ -1,12 +1,12 @@
 {
-  "name": "CodeXource",
+  "name": "ImpactCom",
   "version": "0.0.0",
-  "description": "Codex Resources App",
+  "description": "Impact Reporting Tool",
   "main": "gulpfile.js",
   "scripts": {
     "test": "gulp test"
   },
-  "author": "tarcode, pholisa, nkosi, mawande, e-manual",
+  "author": "mawande, e-manual",
   "license": "BSD-2-Clause",
   "dependencies": {
     "body-parser": "^1.14.0",
@@ -15,7 +15,7 @@
     "express-session": "~1.11.3",
     "gulp": "^3.9.0",
     "gulp-qunit": "^1.2.1",
-    "mongodb": "^2.0.46",
+    "mongodb": "^2.0.47",
     "qunit": "^0.7.7"
   }
 }

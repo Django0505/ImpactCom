@@ -5,14 +5,12 @@
 			<h1>{{this}} METRICS</h1>
 		{{/OrganisationType}}
 
-		<form action="/startup_criteria" method="POST">
-			{{#create_template}}
+			{{#report}}
 				<table>
 					<tbody>
 						{{#each Indicator}}
 							<tr>
-								<td>{{detail}}</td>
-								<td><input type="{{type}}" id="indicator_{{@key}}" name="indicator_{{@key}}" placeholder="{{detail}}"></td>
+								<td>{{detail}}</td>	<td>{{value}}</td>
 							</tr>
 						{{/each}}
 					</tbody>
@@ -32,15 +30,12 @@
 									<label>{{metric}}</label>
 								</td>
 								<td class="metric_{{@key}}-td">
-									<input type="{{type}}" name="metric_{{@key}}" class="metric_{{@key}}">
+									{{value}}>
 								</td>
 							</tr>
 						{{/each}}
 					</tbody>
-				{{/create_template}}
+				{{/report}}
 			</table>
-			<input type="submit" class="btn btn-success"> 
-		</form>
-		<input class="btn btn-outline btn-primary" id="create_startup_criteria" value="Create Startup Criteria" type="submit">
 		</div><!-- list -->
 	</div>
