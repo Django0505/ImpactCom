@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="container col-lg-8 col-lg-offset-2">
+        <h4 class="col-lg-offset-3">Confirm {{heading}}</h4>
+        <form action="/save_startup_criteria" method="POST">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <table class="table">
+                        <thead> 
+                        </thead>
+                        {{#create_template}}
+                            <tbody>
+                                {{#each Criteria}}
+                                    <tr class="metric_{{@key}}-row">
+                                        <td class="metric_{{@key}}-td">
+                                            {{metric}}
+                                        </td>
+                                        <td class="metric_{{@key}}-td">
+                                            <input type="{{type}}" name="metric_{{@key}}" class="metric_{{@key}}" value="{{Value}}">
+                                        </td>
+                                    </tr>
+                                {{/each}}
+                            </tbody>
+                        {{/create_template}}
+                    </table>
+                </div>
+            </div>
+            <input type="submit" class="btn btn-primary" value="Submit Report" name="submit_report"/>
+        </form>
+    </div>
+</div>

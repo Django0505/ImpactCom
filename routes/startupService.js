@@ -23,7 +23,6 @@ module.exports = {
                     console.log(err);
                 }
 
-                console.log(JSON.stringify(result[result.length-1]));
 	            var create_template = result[result.length-1] ? JSON.parse(JSON.stringify(result[result.length-1])) : {};
 
                 db.close();
@@ -35,10 +34,87 @@ module.exports = {
             });
         });
 	},
-	save_report : function(req, res, next){
+	confirm_save_report : function(req, res, next){
+        MongoClient.connect(url, function(err, db) {
+            if (err) {
+                console.log(err, "\n");
+            }
 
-	return res.redirect('/startup_criteria');
+            var CriteriaCreator = db.collection('CriteriaCreator');
+            // Insert some documents
+            CriteriaCreator.find({"For" : "startups"}).toArray(function(err, result) {
+                if (err) {
+                    console.log(err);
+                }
+
+                var create_template = result[result.length-1] ? JSON.parse(JSON.stringify(result[result.length-1])) : {};
+
+                var inputData = JSON.parse(JSON.stringify(req.body));
+
+                for(key in inputData){
+                    if (/metric_/.exec(key)) {
+                        var num = Number(/\d+/.exec(key)[0]);
+
+                        create_template["Criteria"][num].Value = inputData[key];
+                    }
+                    else if (/indicator_/.exec(key)){
+                        var num = Number(/\d+/.exec(key)[0]);
+
+                        create_template["Indicator"][num].Value = inputData[key];
+                    };
+                }
+
+                db.close();
+
+                return res.render("startup_confirm_page", {
+                        create_template : create_template,
+                        heading : "Report"
+                    });
+            });
+        });
+    	// return res.redirect('/startup_criteria');
 	},
+    save_report : function(req, res, next){
+        MongoClient.connect(url, function(err, db) {
+            if (err) {
+                console.log(err, "\n");
+            }
+
+            var CriteriaCreator = db.collection('CriteriaCreator');
+            // Insert some documents
+            CriteriaCreator.find({"For" : "startups"}).toArray(function(err, result) {
+                if (err) {
+                    console.log(err);
+                }
+
+                var create_template = result[result.length-1] ? JSON.parse(JSON.stringify(result[result.length-1])) : {};
+
+                var inputData = JSON.parse(JSON.stringify(req.body));
+
+                for(key in inputData){
+                    if (/metric_/.exec(key)) {
+                        var num = Number(/\d+/.exec(key)[0]);
+
+                        create_template["Criteria"][num].Value = inputData[key];
+                    }
+                    else if (/indicator_/.exec(key)){
+                        var num = Number(/\d+/.exec(key)[0]);
+
+                        create_template["Indicator"][num].Value = inputData[key];
+                    };
+                }
+
+                db.close();
+
+                var msg = "Report saved successfully!";
+                if(inputData.save_profile)
+                    msg = "Profile saved successfully!";
+
+                return res.render("startup_page", {msg : msg});
+            });
+        });
+        // return res.redirect('/startup_criteria');
+    },
 	view_report : function(req, res, next){
 		var report = reportService.get_report({});
 
