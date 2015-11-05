@@ -1,0 +1,88 @@
+<div class="panel panel-default">
+	<!-- Default panel contents -->
+	<div class="panel-heading">Manage</div>
+	<div class="panel-body">
+		<ul class="nav nav-tabs" role="tablist">
+			<li class="active" role="presentation"><a href="#list" role="tab" data-toggle="tab">HUBS</a></li>
+			<li role="presentation"><a href="#hub" role="tab" data-toggle="tab">CRITERIA</a></li>
+			
+		</ul>
+	</div>
+	<div class="tab-content">
+		<div role="tabpanel" class="tab-pane" id="list">
+			<!-- Table -->
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Profile</th>
+						<th>Reports</th>
+						
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>hddhdfd</td>
+						<td>dhgdshgdsh</td>
+						<td>hdsdsjbsd</td>
+						
+					</tr>
+					
+					
+				</tbody>
+			</table>
+		</div>
+		<div role="tabpanel" class="tab-pane" id="hub"><div id="hub_criteria">
+			<h1>CREATE CRITERIA PAGE</h1>
+			<form action="/criteria" method="get">
+				<br><br><br>
+				<table>
+					<thead>
+						<tr>
+							<th><h3>Details of HUB</h3></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="detail-row">
+							<td><input name="detail" type="text"></td>
+							<td>
+								<select name="detail_type" id="inputType">
+									<option value="text">Text/String</option>
+									<option value="number">Number</option>
+								</select>
+							</td>
+							<td>
+								<input class="btn btn-default detail" readonly value="Add">
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<br/>
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th></th><th><h1>Criteria</h1></th><th></th>
+						</tr>
+						<tr>
+							<th>Name of Metric</th><th>DataType of Metric</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="metric-row">
+							<td><input name="metric" type="text"></td>
+							<td>
+								<select name="metric_type" id="inputType">
+									<option value="number">Number</option>
+									<option value="text">Text/String</option>
+								</select>
+							</td>
+							<td><input class="btn btn-primary metric" readonly value="Add metric"></td>
+						</tr>
+					</tbody>
+				</table>
+				<input type="submit" name="create_criteria" class="btn btn-success" value="Done ">
+			</form>
+		</div></div>
+	</div>
+</div>
+</div>
