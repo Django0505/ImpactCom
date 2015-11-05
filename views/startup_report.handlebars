@@ -1,0 +1,78 @@
+<div class="container">
+	<div class="container col-lg-8 col-lg-offset-2">
+		<ol class="breadcrumb">
+			<li><a href="/startup_page">Home</a></li>
+		  <li class="active">Complete Report</li>
+		</ol>
+
+		<br/>
+		<div class="col-lg-12">
+			<!-- Nav tabs -->
+			<ul class="nav nav-pills" role="tablist">
+				<li role="presentation" class="active"><a href="#report" role="tab" data-toggle="tab">Complete Report</a></li>
+				<li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
+			</ul>
+
+			<!-- Tab panes -->
+			<div class="tab-content">
+				<div role="tabpanel" class="tab-pane active" id="report">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<form action="/confirm_startup_criteria" method="POST">
+								<table class="table">
+									<thead>	
+									</thead>
+
+									{{#create_template}}
+										<tbody>
+											{{#each Criteria}}
+												<tr class="metric_{{@key}}-row">
+													<td class="metric_{{@key}}-td">
+														{{metric}}
+													</td>
+													<td class="metric_{{@key}}-td">
+														<input type="{{type}}" name="metric_{{@key}}" class="metric_{{@key}}">
+													</td>
+												</tr>
+											{{/each}}
+
+										</tbody>
+									{{/create_template}}
+								</table>
+								<input name="save_report" type="submit" value="Save Report" class="btn btn-success">
+							</form>
+						</div>
+					</div>
+				</div>
+				<div role="tabpanel" class="tab-pane" id="profile">
+					<div class="panel panel-default">
+						<form action="/startup_profile" method="POST">
+							<div class="panel-body">
+								<table class="table">
+									<thead>	
+									</thead>
+									{{#create_template}}
+										<tbody>
+											{{#each Indicator}}
+												<tr class="detail_{{@key}}-row">
+													<td class="detail_{{@key}}-td">
+														{{detail}}
+													</td>
+													<td class="detail_{{@key}}-td">
+														<input type="{{type}}" name="detail_{{@key}}" class="detail_{{@key}}">
+													</td>
+												</tr>
+											{{/each}}
+										</tbody>
+									{{/create_template}}
+								</table>
+							</div>
+							<input name="save_profile" type="submit" value="Save Profile" class="btn btn-success">
+						</form>
+					</div>
+				</div>
+			</div>
+			<br>
+		</div>
+	</div>
+</div>
