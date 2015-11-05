@@ -28,7 +28,7 @@ module.exports = {
 
                 db.close();
 
-                return res.render("criteria_for_startup", {
+                return res.render("startup_report", {
                 		create_template : create_template,
                 		OrganisationType : "StartUp"
                 	});

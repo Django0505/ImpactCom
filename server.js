@@ -56,9 +56,17 @@ app.get('/hubs/:hub_name', hubService.view_report);
 app.get('/hubs/:hub_name/startups', hubService.list_startups);
 app.get('/hubs/:hub_name/startups/startup_name', startupService.view_report);
 
+<<<<<<< HEAD
+//Test startup_report page UI
+app.get('/startup_report', function(req, res, next){
+	res.render('startup_report');
+});
+
+=======
 app.get('/funder_new', function(req,res, next){
 	res.render('funder')
 })
+>>>>>>> develop
 http.listen(3000, function(server){
     console.log('listening on :::3000');
 });
