@@ -45,13 +45,13 @@
 					</thead>
 					<tbody>
 						<tr class="detail-row">
-							<td><b>Detail:<b> <input name="detail" type="text"></td> 
+							<td><b>Detail:<b> <input name="detail" type="text"></td>
 							<td>&nbsp;
 								<select name="detail_type" id="inputType">
 									<option value="text">Text</option>
 									<option value="number">Number</option>
 								</select>
-							</td> 
+							</td>
 							<td>&nbsp;
 								<input class="btn btn-primary detail" readonly value="Add">
 							</td>
@@ -60,22 +60,20 @@
 				</table>
 				<br/>
 				
+				<input type="submit" name="create_criteria" class="btn btn-success" value="Save ">
+
 			</form>
-		</div></div>
-	</div>
-</div>
-</div>
-<div class="tab-content">
+		</div>
 		<div role="tabpanel" class="tab-pane" id="criteria_creator">
 			<h1>CREATE HUB CRITERIA</h1>
-		<form action="/criteria" method="get">
-			<table class="table table-bordered">
+			<form action="/criteria" method="get">
+				<table class="table table-bordered">
 					<thead>
 						<tr>
-							<th></th><th><h1>Criteria</h1></th><th></th>
+							<h1 style="text-align:center">Criteria</h1>
 						</tr>
 						<tr>
-							<th>Name of Metric</th><th>DataType of Metric</th>
+							<th>Name of Metric</th><th>Type of Metric</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -84,15 +82,16 @@
 							<td>
 								<select name="metric_type" id="inputType">
 									<option value="number">Number</option>
-									<option value="text">Text/String</option>
+									<option value="text">Text</option>
 								</select>
 							</td>
-							<td><input class="btn btn-primary metric" readonly value="Add metric"></td>
+							<td class= "table-cell-borderless"><input class="btn btn-primary metric" readonly value="Add metric"></td>
 						</tr>
 					</tbody>
 				</table>
-	
+				
 				<input type="submit" name="create_criteria" class="btn btn-success" value="Save ">
 			</form>
-</div>
+		</div>
+	</div>
 </div>
