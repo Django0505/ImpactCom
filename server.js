@@ -57,8 +57,8 @@ app.get('/hubs/:hub_name/startups', hubService.list_startups);
 app.get('/hubs/:hub_name/startups/startup_name', startupService.view_report);
 
 //Test startup_report page UI
-app.get('/startup_report', function(req, res, next){
-	res.render('startup_report');
+app.get('/startup_confirm_page', function(req, res, next){
+	res.render('startup_confirm_page');
 });
 
 app.get('/funder_new', function(req,res, next){
