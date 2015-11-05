@@ -1,123 +1,127 @@
 <div class="container">
-	<ol class="breadcrumb">
-		<li><a href="/startup_page">Home</a></li>
-	  <li class="active">Complete Report</li>
-	</ol>
+	<div class="container col-lg-8 col-lg-offset-2">
+		<ol class="breadcrumb">
+			<li><a href="/startup_page">Home</a></li>
+		  <li class="active">Complete Report</li>
+		</ol>
 
-	<br/>
-	<div class="col-lg-12">
-		<!-- Nav tabs -->
-		<ul class="nav nav-pills" role="tablist">
-			<li role="presentation" class="active"><a href="#report" role="tab" data-toggle="tab">Complete Report</a></li>
-			<li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
-		</ul>
+		<br/>
+		<div class="col-lg-12">
+			<!-- Nav tabs -->
+			<ul class="nav nav-pills" role="tablist">
+				<li role="presentation" class="active"><a href="#report" role="tab" data-toggle="tab">Complete Report</a></li>
+				<li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
+			</ul>
 
-		<!-- Tab panes -->
-		<div class="tab-content">
-			<div role="tabpanel" class="tab-pane active" id="report">
-				<div class="panel panel-default">
-					<div class="panel-body">
-						<table class="table">
-							<thead>	
-							</thead>
+			<!-- Tab panes -->
+			<div class="tab-content">
+				<div role="tabpanel" class="tab-pane active" id="report">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<form action="/confirm_startup_criteria" method="POST">
+								<table class="table">
+									<thead>	
+									</thead>
 
-							{{#create_template}}
-								<tbody>
-									{{#each Criteria}}
-										<tr class="metric_{{@key}}-row">
-											<td class="metric_{{@key}}-td">
-												{{metric}}
-											</td>
-											<td class="metric_{{@key}}-td">
-												<input type="{{type}}" name="metric_{{@key}}" class="metric_{{@key}}">
-											</td>
-										</tr>
-									{{/each}}
+									{{#create_template}}
+										<tbody>
+											{{#each Criteria}}
+												<tr class="metric_{{@key}}-row">
+													<td class="metric_{{@key}}-td">
+														{{metric}}
+													</td>
+													<td class="metric_{{@key}}-td">
+														<input type="{{type}}" name="metric_{{@key}}" class="metric_{{@key}}">
+													</td>
+												</tr>
+											{{/each}}
 
-								</tbody>
-							{{/create_template}}
-						</table>
+										</tbody>
+									{{/create_template}}
+								</table>
+								<input name="save_report" type="submit" value="Save Report" class="btn btn-success">
+							</form>
+						</div>
 					</div>
 				</div>
-				<input name="save_report" type="submit" value="Save Report" class="btn btn-success">
-			</div>
-			<div role="tabpanel" class="tab-pane" id="profile">
-				<div class="panel panel-default">
+				<div role="tabpanel" class="tab-pane" id="profile">
+					<div class="panel panel-default">
 
-					<div class="panel-body">
-						<table class="table">
-							<thead>	
-							</thead>
+						<div class="panel-body">
+							<table class="table">
+								<thead>	
+								</thead>
 
-							{{#create_template}}
-								<tbody>
-									{{#each Indicator}}
-										<tr class="detail_{{@key}}-row">
-											<td class="detail_{{@key}}-td">
-												{{detail}}
-											</td>
-											<td class="detail_{{@key}}-td">
-												<input type="{{type}}" name="detail_{{@key}}" class="detail_{{@key}}">
-											</td>
-										</tr>
-									{{/each}}
+								{{#create_template}}
+									<tbody>
+										{{#each Indicator}}
+											<tr class="detail_{{@key}}-row">
+												<td class="detail_{{@key}}-td">
+													{{detail}}
+												</td>
+												<td class="detail_{{@key}}-td">
+													<input type="{{type}}" name="detail_{{@key}}" class="detail_{{@key}}">
+												</td>
+											</tr>
+										{{/each}}
 
-								</tbody>
-							{{/create_template}}
-						</table>
+									</tbody>
+								{{/create_template}}
+							</table>
+						</div>
+					</div>
+					<!-- Button trigger modal -->
+					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirm_save_profile">
+					  Save Profile
+					</button>
+
+					<!-- Modal -->
+					<div class="modal fade" id="confirm_save_profile" tabindex="-1" role="dialog" aria-labelledby="confirm_save_profile">
+					  <div class="modal-dialog" role="document">
+					    <div class="modal-content">
+					      <div class="modal-header">
+					        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					        <h4 class="modal-title" id="confirm_save_profile">Confirm Profile Details	</h4>
+					      </div>
+					      <div class="modal-body">
+					        <form action="/startup_criteria" method="POST">
+	        					<div class="panel panel-default">
+
+	        						<div class="panel-body">
+	        							<table class="table">
+	        								<thead>	
+	        								</thead>
+
+	        								{{#create_template}}
+	        									<tbody>
+	        										{{#each Indicator}}
+	        											<tr class="detail_{{@key}}-row">
+	        												<td class="detail_{{@key}}-td">
+	        													{{detail}}
+	        												</td>
+	        												<td class="detail_{{@key}}-td">
+	        													<input type="{{type}}" name="detail_{{@key}}" class="detail_{{@key}}">
+	        												</td>
+	        											</tr>
+	        										{{/each}}
+
+	        									</tbody>
+	        								{{/create_template}}
+	        							</table>
+	        						</div>
+	        					</div>
+	 							<div class="modal-footer">
+	 							  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	 							  <input type="submit" class="btn btn-primary" value="Save Profile" name="save_profile"/>
+	 							</div>
+	        				</form>
+					      </div>
+					    </div>
+					  </div>
 					</div>
 				</div>
-				<!-- Button trigger modal -->
-				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirm_save_profile">
-				  Save Profile
-				</button>
-
-				<!-- Modal -->
-				<div class="modal fade" id="confirm_save_profile" tabindex="-1" role="dialog" aria-labelledby="confirm_save_profile">
-				  <div class="modal-dialog" role="document">
-				    <div class="modal-content">
-				      <div class="modal-header">
-				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				        <h4 class="modal-title" id="confirm_save_profile">Confirm Profile Details	</h4>
-				      </div>
-				      <div class="modal-body">
-				        <form action="/startup_criteria" method="POST">
-        					<div class="panel panel-default">
-
-        						<div class="panel-body">
-        							<table class="table">
-        								<thead>	
-        								</thead>
-
-        								{{#create_template}}
-        									<tbody>
-        										{{#each Indicator}}
-        											<tr class="detail_{{@key}}-row">
-        												<td class="detail_{{@key}}-td">
-        													{{detail}}
-        												</td>
-        												<td class="detail_{{@key}}-td">
-        													<input type="{{type}}" name="detail_{{@key}}" class="detail_{{@key}}">
-        												</td>
-        											</tr>
-        										{{/each}}
-
-        									</tbody>
-        								{{/create_template}}
-        							</table>
-        						</div>
-        					</div>
- 							<div class="modal-footer">
- 							  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
- 							  <input type="submit" class="btn btn-primary" value="Save Profile" name="save_profile"/>
- 							</div>
-        				</form>
-				      </div>
-				    </div>
-				  </div>
-				</div>
 			</div>
+			<br>
 		</div>
-		<br>
 	</div>
 </div>

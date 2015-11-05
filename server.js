@@ -37,7 +37,8 @@ app.post("/criteria_post", reportDataCapturer.save_report);
 app.post("/create_startup_criteria", hubService.create_startup_criteria);
 
 app.get("/startup_criteria", startupService.render_criteria);
-app.post("/startup_criteria", startupService.save_report);
+app.post("/confirm_startup_criteria", startupService.confirm_save_report);
+app.get("/save_startup_criteria", startupService.save_report);
 
 app.get('/create_hub_criteria', reportCriteriaCreator.get_create_hub_criteria);
 
@@ -57,9 +58,9 @@ app.get('/hubs/:hub_name/startups', hubService.list_startups);
 app.get('/hubs/:hub_name/startups/startup_name', startupService.view_report);
 
 //Test startup_report page UI
-app.get('/startup_confirm_page', function(req, res, next){
-	res.render('startup_confirm_page');
-});
+// app.get('/startup_confirm_page', function(req, res, next){
+// 	res.render('startup_confirm_page');
+// });
 
 app.get('/funder_new', function(req,res, next){
 	res.render('funder')
