@@ -106,7 +106,11 @@ module.exports = {
 
                 db.close();
 
-                return res.render("startup_page", {msg : "Report saved successfully!"});
+                var msg = "Report saved successfully!";
+                if(inputData.save_profile)
+                    msg = "Profile saved successfully!";
+
+                return res.render("startup_page", {msg : msg});
             });
         });
         // return res.redirect('/startup_criteria');

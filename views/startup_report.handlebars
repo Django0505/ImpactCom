@@ -46,78 +46,29 @@
 				</div>
 				<div role="tabpanel" class="tab-pane" id="profile">
 					<div class="panel panel-default">
-
-						<div class="panel-body">
-							<table class="table">
-								<thead>	
-								</thead>
-
-								{{#create_template}}
-									<tbody>
-										{{#each Indicator}}
-											<tr class="detail_{{@key}}-row">
-												<td class="detail_{{@key}}-td">
-													{{detail}}
-												</td>
-												<td class="detail_{{@key}}-td">
-													<input type="{{type}}" name="detail_{{@key}}" class="detail_{{@key}}">
-												</td>
-											</tr>
-										{{/each}}
-
-									</tbody>
-								{{/create_template}}
-							</table>
-						</div>
-					</div>
-					<!-- Button trigger modal -->
-					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirm_save_profile">
-					  Save Profile
-					</button>
-
-					<!-- Modal -->
-					<div class="modal fade" id="confirm_save_profile" tabindex="-1" role="dialog" aria-labelledby="confirm_save_profile">
-					  <div class="modal-dialog" role="document">
-					    <div class="modal-content">
-					      <div class="modal-header">
-					        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					        <h4 class="modal-title" id="confirm_save_profile">Confirm Profile Details	</h4>
-					      </div>
-					      <div class="modal-body">
-					        <form action="/startup_criteria" method="POST">
-	        					<div class="panel panel-default">
-
-	        						<div class="panel-body">
-	        							<table class="table">
-	        								<thead>	
-	        								</thead>
-
-	        								{{#create_template}}
-	        									<tbody>
-	        										{{#each Indicator}}
-	        											<tr class="detail_{{@key}}-row">
-	        												<td class="detail_{{@key}}-td">
-	        													{{detail}}
-	        												</td>
-	        												<td class="detail_{{@key}}-td">
-	        													<input type="{{type}}" name="detail_{{@key}}" class="detail_{{@key}}">
-	        												</td>
-	        											</tr>
-	        										{{/each}}
-
-	        									</tbody>
-	        								{{/create_template}}
-	        							</table>
-	        						</div>
-	        					</div>
-	 							<div class="modal-footer">
-	 							  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	 							  <input type="submit" class="btn btn-primary" value="Save Profile" name="save_profile"/>
-	 							</div>
-	        				</form>
-					      </div>
-					    </div>
-					  </div>
+						<form action="/startup_profile" method="POST">
+							<div class="panel-body">
+								<table class="table">
+									<thead>	
+									</thead>
+									{{#create_template}}
+										<tbody>
+											{{#each Indicator}}
+												<tr class="detail_{{@key}}-row">
+													<td class="detail_{{@key}}-td">
+														{{detail}}
+													</td>
+													<td class="detail_{{@key}}-td">
+														<input type="{{type}}" name="detail_{{@key}}" class="detail_{{@key}}">
+													</td>
+												</tr>
+											{{/each}}
+										</tbody>
+									{{/create_template}}
+								</table>
+							</div>
+							<input name="save_profile" type="submit" value="Save Profile" class="btn btn-success">
+						</form>
 					</div>
 				</div>
 			</div>
