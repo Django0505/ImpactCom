@@ -71,7 +71,7 @@ module.exports = {
                 template = (template[template.length-1])? JSON.parse(template[template.length-1].criteria_template) : {};
                     
                 for(key in inputData){
-                    if (/metric_/.exec(key)) {
+                    if (/metric_/.exec(key)){
                         var num = Number(/\d+/.exec(key)[0]);
 
                         template["Criteria"][num].value = inputData[key];
@@ -82,6 +82,8 @@ module.exports = {
                         template["Indicator"][num].value = inputData[key];
                     };
                 }
+
+                template["Organisation"] = "mlab";
 
                 CriteriaReports.insert(template, function(err, result) {
 

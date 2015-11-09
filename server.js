@@ -40,6 +40,8 @@ app.get("/startup_criteria", startupService.render_criteria);
 app.post("/confirm_startup_criteria", startupService.confirm_save_report);
 app.post(["/save_startup_criteria", "/startup_profile"], startupService.save_report);
 
+app.get(["/save_startup_criteria", "/startup_profile"], startupService.save_report);
+
 app.get('/create_hub_criteria', reportCriteriaCreator.get_create_hub_criteria);
 
 app.post('/create_hub_criteria', reportCriteriaCreator.create_hub_criteria);

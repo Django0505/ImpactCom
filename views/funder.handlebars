@@ -1,97 +1,105 @@
-<div class="panel panel-default">
-	<!-- Default panel contents -->
-	<div class="panel-heading">Manage</div>
-	<div class="panel-body">
-		<ul class="nav nav-tabs" role="tablist">
-			<li class="active" role="presentation"><a href="#list" role="tab" data-toggle="tab">HUBS</a></li>
-			<li role="presentation"><a href="#profile_creator" role="tab" data-toggle="tab">PROFILE CREATOR</a></li>
-			<li role="presentation"><a href="#criteria_creator" role="tab" data-toggle="tab">CRITERIA CREATOR</a></li>
-			
-		</ul>
-	</div>
-	<div class="tab-content">
-		<div role="tabpanel" class="tab-pane active" id="list">
-			<!-- Table -->
-			<table class="table table-striped">
-				<thead>
-					<tr>
-						<th>Name</th>
-						<th>Profile</th>
-						<th>Reports</th>
-						
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>hddhdfd</td>
-						<td>dhgdshgdsh</td>
-						<td>hdsdsjbsd</td>
-						
-					</tr>
-					
-					
-				</tbody>
-			</table>
+<div class="container">
+	<div class="panel panel-default">
+		<!-- Default panel contents -->
+		<div class="panel-heading">Manage</div>
+		<div class="panel-body">
+			<ul class="nav nav-tabs" role="tablist">
+				<li class="active" role="presentation"><a href="#list" role="tab" data-toggle="tab">HUBS</a></li>
+				<li role="presentation"><a href="#profile_creator" role="tab" data-toggle="tab">PROFILE CREATOR</a></li>
+				<li role="presentation"><a href="#criteria_creator" role="tab" data-toggle="tab">CRITERIA CREATOR</a></li>
+				
+			</ul>
 		</div>
-		<div role="tabpanel" class="tab-pane" id="profile_creator">
-			<h1>CREATE HUB PROFILE</h1>
-			<form action="/criteria" method="get">
-				<br><br><br>
-				<table>
+		<div class="tab-content">
+			<div role="tabpanel" class="tab-pane active" id="list">
+				<!-- Table -->
+				<table class="table table-striped">
 					<thead>
 						<tr>
-							<th><h3>Details of HUB</h3></th>
+							<th>Name</th>
+							<th>Profile</th>
+							<th>Reports</th>
+							
 						</tr>
 					</thead>
 					<tbody>
-						<tr class="detail-row">
-							<td><b>Detail:<b> <input name="detail" type="text"></td>
-							<td>&nbsp;
-								<select name="detail_type" id="inputType">
-									<option value="text">Text</option>
-									<option value="number">Number</option>
-								</select>
-							</td>
-							<td>&nbsp;
-								<input class="btn btn-primary detail" readonly value="Add">
-							</td>
+						<tr>
+							<td>hddhdfd</td>
+							<td>dhgdshgdsh</td>
+							<td>hdsdsjbsd</td>
+							
 						</tr>
+						
+						
 					</tbody>
 				</table>
-				<br/>
+			</div>
+			<div role="tabpanel" class="tab-pane" id="profile_creator">
+				<div class="col-lg-8 col-lg-offset-3">
+					<h1>CREATE HUB PROFILE</h1>
+				</div>
 				
-				<input type="submit" name="create_criteria" class="btn btn-success" value="Save ">
+				<form action="/criteria_post" method="POST">
+					<br><br><br>
+					<table>
+						<thead>
+							<tr>
+								<th><h3>Details of HUB</h3></th>
+							</tr>
+						</thead>
+						<br/>
+						<tbody>
+							<tr class="detail-row">
+								<td><b>Detail:<b> <input name="detail" type="text"></td>
+								<td>&nbsp;
+									<select name="detail_type" id="inputType">
+										<option value="text">Text</option>
+										<option value="number">Number</option>
+									</select>
+								</td>
+								<td>&nbsp;
+									<input class="btn btn-primary detail" readonly value="Add">
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<br/>
+					
+					<input type="submit" name="create_criteria" class="btn btn-success" value="Save Profile Skeleton">
 
-			</form>
-		</div>
-		<div role="tabpanel" class="tab-pane" id="criteria_creator">
-			<h1>CREATE HUB CRITERIA</h1>
-			<form action="/criteria" method="get">
-				<table class="table table-bordered">
-					<thead>
-						<tr>
-							<h1 style="text-align:center">Criteria</h1>
-						</tr>
-						<tr>
-							<th>Name of Metric</th><th>Type of Metric</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr class="metric-row">
-							<td><input name="metric" type="text"></td>
-							<td>
-								<select name="metric_type" id="inputType">
-									<option value="number">Number</option>
-									<option value="text">Text</option>
-								</select>
-							</td>
-							<td class= "table-cell-borderless"><input class="btn btn-primary metric" readonly value="Add metric"></td>
-						</tr>
-					</tbody>
-				</table>
-				
-				<input type="submit" name="create_criteria" class="btn btn-success" value="Save ">
-			</form>
+				</form>
+			</div>
+			<div role="tabpanel" class="tab-pane" id="criteria_creator">
+				<div class="col-lg-8 col-lg-offset-3">
+					<h1>CREATE HUB CRITERIA</h1>
+				</div>
+				<form action="/criteria_post" method="POST">
+					<table class="table table-bordered">
+						<thead>
+							<tr>
+								<h1 style="text-align:center">Criteria</h1>
+							</tr>
+							<tr>
+								<th>Name of Metric</th><th>Type of Metric</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr class="metric-row">
+								<td><input name="metric" type="text"></td>
+								<td>
+									<select name="metric_type" id="inputType">
+										<option value="number">Number</option>
+										<option value="text">Text</option>
+									</select>
+								</td>
+								<td class= "table-cell-borderless"><input class="btn btn-primary metric" readonly value="Add metric"></td>
+							</tr>
+						</tbody>
+					</table>
+					
+					<input type="submit" name="create_criteria" class="btn btn-success" value="Save Report Skeleton">
+				</form>
+			</div>
 		</div>
 	</div>
 </div>
