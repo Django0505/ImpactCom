@@ -40,7 +40,8 @@ $(".detail").click(function(){
 
 		criteria_template.Indicator.push({detail : entered_detail.val(),type : entered_detail_type.val()});
 
-		$('.detail-row').before('<tr><td>'+entered_detail.val()+'</td><td><input type='+entered_detail_type.val()+'></td></tr>');
+		$('.detail-row').before('<tr><td data-label="Entered Detail">'+entered_detail.val()+'</td><td data-label="Enter '+entered_detail.val()+'"><input type='+entered_detail_type.val()+'></td></tr>');
+
 		entered_detail.val('');
 		det_num++;
 	}
@@ -61,7 +62,7 @@ $(".metric").click(function(){
 
 		criteria_template.Criteria.push({metric : entered_metric.val(),type : entered_metric_type.val()});
 
-		$('.metric-row').before('<tr><td><label>'+entered_metric.val()+'</label></td><td><input type='+entered_metric_type.val()+'></td></tr>');
+		$('.metric-row').before('<tr><td data-label="Entered metric">'+entered_metric.val()+'</td><td data-label="Enter '+entered_metric.val()+'"><input type='+entered_metric_type.val()+'></td></tr>');
 		entered_metric.val('');
 		met_num++;
 	}
