@@ -35,6 +35,13 @@ module.exports = {
         });
 	},
 	confirm_save_report : function(req, res, next){
+
+        var inputData = JSON.parse(JSON.stringify(req.body));
+
+        if(inputData.save_report){
+            return res.redirect('/save_startup_criteria');
+        }
+
         MongoClient.connect(url, function(err, db) {
             if (err) {
                 console.log(err, "\n");
@@ -48,8 +55,6 @@ module.exports = {
                 }
 
                 var create_template = result[result.length-1] ? JSON.parse(JSON.stringify(result[result.length-1])) : {};
-
-                var inputData = JSON.parse(JSON.stringify(req.body));
 
                 for(key in inputData){
                     if (/metric_/.exec(key)) {
