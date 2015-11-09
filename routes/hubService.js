@@ -53,7 +53,7 @@ module.exports = {
 						}
 					];
 
-		res.render('menu_page', {menu : menu});
+		res.render('hub_page', {menu : menu});
 	},
 	create_startup_criteria : reportCriteriaCreator.create_startup_criteria
 }

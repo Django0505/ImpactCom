@@ -1,0 +1,108 @@
+<div class="container">
+	<div class="panel panel-default">
+		<!-- Default panel contents -->
+		<div class="panel-heading">Manage</div>
+		<div class="panel-body">
+			<ul class="nav nav-pills" role="tablist">
+				<li class="active" role="presentation"><a href="#list" role="tab" data-toggle="tab">STARTUPS</a></li>
+				<li role="presentation"><a href="#profile_creator" role="tab" data-toggle="tab">ADD STARTUP</a></li>
+				<li role="presentation"><a href="#criteria_creator" role="tab" data-toggle="tab">STARTUP REPORT TEMPLATE</a></li>
+				
+			</ul>
+		</div>
+		<div class="tab-content">
+			<div role="tabpanel" class="tab-pane active" id="list">
+				<!-- Table -->
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>Startup Name</th>
+							<th>Profile</th>
+							<th>Reports</th>
+							
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><a href="#">Startup</a></td>
+							<td><a href="#">Startup Profile</a></td>
+							<td><a href="#">Startup Report</a></td>
+							
+						</tr>
+						<tr>
+							<td><a href="#">Startup2</a></td>
+							<td><a href="#">Startup2 Profile</a></td>
+							<td><a href="#">Startup2 Report</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div role="tabpanel" class="tab-pane" id="profile_creator">
+				<div class="col-lg-8 col-lg-offset-3">
+					<h1>CREATE STARTUP PROFILE</h1>
+				</div>
+				
+				<form action="/criteria_post" method="POST">
+					<br><br><br>
+					<table>
+						<thead>
+							<tr>
+								<th><h3>Details of STARTUP</h3></th>
+							</tr>
+						</thead>
+						<br/>
+						<tbody>
+							<tr class="detail-row">
+								<td><b>Detail:<b> <input name="detail" type="text"></td>
+								<td>&nbsp;
+									<select name="detail_type" id="inputType">
+										<option value="text">Text</option>
+										<option value="number">Number</option>
+									</select>
+								</td>
+								<td>&nbsp;
+									<input class="btn btn-primary detail" readonly value="Add">
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<br/>
+					
+					<input type="submit" name="create_criteria" class="btn btn-success" value="Save Profile Skeleton">
+
+				</form>
+			</div>
+			<div role="tabpanel" class="tab-pane" id="criteria_creator">
+				<div class="col-lg-8 col-lg-offset-3">
+					<h1>CREATE STARTUP CRITERIA</h1>
+				</div>
+				<form action="/criteria_post" method="POST">
+					<table class="table table-bordered">
+						<thead>
+							<tr>
+								<h1 style="text-align:center">Criteria</h1>
+							</tr>
+							<tr>
+								<th>Name of Metric</th><th>Type of Metric</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr class="metric-row">
+								<td><input name="metric" type="text"></td>
+								<td>
+									<select name="metric_type" id="inputType">
+										<option value="number">Number</option>
+										<option value="text">Text</option>
+									</select>
+								</td>
+								<td class= "table-cell-borderless"><input class="btn btn-primary metric" readonly value="Add metric"></td>
+							</tr>
+						</tbody>
+					</table>
+					
+					<input type="submit" name="create_criteria" class="btn btn-success" value="Save Report Skeleton">
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
