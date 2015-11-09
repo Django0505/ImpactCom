@@ -3,7 +3,6 @@ var checked_boxes = {};
 
 $('input[type=checkbox]').click(function(){
 	var checkbox_class_val = $(this).attr('class');
-	alert(checkbox_class_val)
 	if ( $(this).checked == false || $(this).checked == undefined) {
 		$(this).checked = true;
 
