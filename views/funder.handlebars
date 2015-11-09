@@ -2,7 +2,7 @@
 	<!-- Default panel contents -->
 	<div class="panel-heading">Manage</div>
 	<div class="panel-body">
-		<ul class="nav nav-tabs" role="tablist">
+		<ul class="nav nav-pills" role="tablist">
 			<li class="active" role="presentation"><a href="#list" role="tab" data-toggle="tab">HUBS</a></li>
 			<li role="presentation"><a href="#profile_creator" role="tab" data-toggle="tab">PROFILE CREATOR</a></li>
 			<li role="presentation"><a href="#criteria_creator" role="tab" data-toggle="tab">CRITERIA CREATOR</a></li>
@@ -12,7 +12,7 @@
 	<div class="tab-content">
 		<div role="tabpanel" class="tab-pane active" id="list">
 			<!-- Table -->
-			<table class="table table-striped">
+			<table class="table table-responsive">
 				<thead>
 					<tr>
 						<th>Name</th>
@@ -22,10 +22,11 @@
 					</tr>
 				</thead>
 				<tbody>
+				
 					<tr>
-						<td>hddhdfd</td>
-						<td><a href="/">View Profile</a></td>
-						<td><a href="/hubs/:hub_name/view_report">View Reports</a></td>
+						<td data-label="Name">AMANZI</td>
+						<td data-label="Profile"><a href="/">View Profile</a></td>
+						<td data-label="Reports"><a href="/hubs/:hub_name/view_report">View Reports</a></td>
 						
 					</tr>
 					
@@ -37,21 +38,17 @@
 			<h1>CREATE HUB PROFILE</h1>
 			<form action="/criteria" method="get">
 				<br><br><br>
-				<table>
+				<table class="table table-responsive">
 					<thead>
 						<tr>
-							<th><h3>Details of HUB</h3></th>
+							<th>Details of HUB</th>
+							<th></th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr class="detail-row">
-							<td><b>Detail:<b> <input name="detail" type="text"></td>
-							<td>&nbsp;
-								<select name="detail_type" id="inputType">
-									<option value="text">Text</option>
-									<option value="number">Number</option>
-								</select>
-							</td>
+							<td data-label="Detail"> <input name="detail" type="text"></td>
+						
 							<td>&nbsp;
 								<input class="btn btn-primary detail" readonly value="Add">
 							</td>
@@ -67,24 +64,18 @@
 		<div role="tabpanel" class="tab-pane" id="criteria_creator">
 			<h1>CREATE HUB CRITERIA</h1>
 			<form action="/criteria" method="get">
-				<table class="table table-bordered">
+				<table class="table table-responsive">
 					<thead>
 						<tr>
 							<h1 style="text-align:center">Criteria</h1>
 						</tr>
 						<tr>
-							<th>Name of Metric</th><th>Type of Metric</th>
+							<th>Name of Metric</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr class="metric-row">
-							<td><input name="metric" type="text"></td>
-							<td>
-								<select name="metric_type" id="inputType">
-									<option value="number">Number</option>
-									<option value="text">Text</option>
-								</select>
-							</td>
+							<td data-label="Name of Metric"><input name="metric" type="text"></td>
 							<td class= "table-cell-borderless"><input class="btn btn-primary metric" readonly value="Add metric"></td>
 						</tr>
 					</tbody>
