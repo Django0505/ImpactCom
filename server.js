@@ -5,7 +5,7 @@ var exphbs  = require('express-handlebars'),
     MongoClient = require('mongodb').MongoClient,
     session = require('express-session'),
     bodyParser = require('body-parser');
-
+var url = 'mongodb://localhost:27017/impact';
 app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());

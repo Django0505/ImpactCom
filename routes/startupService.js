@@ -5,7 +5,7 @@ var	notificationService = require('./notificationService'),
 	reportService = require('./reportService');
 
 //Connect to mongodb [ConnectionURL]
-var url = 'mongodb://localhost:27017/impact';
+//var url = 'mongodb://localhost:27017/impact';
 var MongoClient = require('mongodb').MongoClient;
 
 module.exports = {
