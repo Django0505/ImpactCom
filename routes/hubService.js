@@ -38,22 +38,36 @@ module.exports = {
 	create_startup_criteria : reportCriteriaCreator.create_startup_criteria,
 
 	hub_page : function(req, res, next){
-		var menu = [
-						{
-							link :'/hubs/mlab/startups',
-							label : "List Startups"
-						},
-						{
-							link : "/hubs/mlab",
-							label : "View my report"
-						},
-						{
-							link : "/criteria",
-							label : "Report"
-						}
-					];
 
-		res.render('menu_page', {menu : menu});
+		MongoClient.connect(url, function(err, db) {
+            if (err) {
+                console.log(err, "\n");
+            }
+
+            var CriteriaCreator = db.collection('CriteriaCreator');
+            // Insert some documents
+            CriteriaCreator.find({"For" : {$nin : ["startups"]}}).toArray(function(err, result) {
+                if (err) {
+                    console.log(err);
+                }
+                var last_index = result.length-1;
+	            var criteria_temp = result[last_index].criteria_template ? JSON.parse(result[last_index].criteria_template) : {};
+
+                db.close();
+             
+				var profile_template = 	{
+											Organisation : "Name of Organisation",		
+											OrganisationDescrption : "Discription of Organisation",
+											YearsActive : "Years active",
+											ContactPerson : "Contact Person",
+											ContactEmail : "Contact Email"
+										};
+
+				res.render('hub_page', {profile_template : profile_template,
+										criteria_template : criteria_temp
+									});
+            });
+        });
 	},
 	create_startup_criteria : reportCriteriaCreator.create_startup_criteria
 }

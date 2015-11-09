@@ -41,7 +41,7 @@ module.exports = {
 	            var criteria_temp = result[last_index].criteria_template ? JSON.parse(result[last_index].criteria_template) : {};
 
                 db.close();
-                return res.render("criteria", {
+                return res.render("hub_page", {
 				criteria_template : criteria_temp	
 				});
             });
@@ -71,7 +71,7 @@ module.exports = {
                 template = (template[template.length-1])? JSON.parse(template[template.length-1].criteria_template) : {};
                     
                 for(key in inputData){
-                    if (/metric_/.exec(key)) {
+                    if (/metric_/.exec(key)){
                         var num = Number(/\d+/.exec(key)[0]);
 
                         template["Criteria"][num].value = inputData[key];
@@ -83,6 +83,8 @@ module.exports = {
                     };
                 }
 
+                template["Organisation"] = "mlab";
+
                 CriteriaReports.insert(template, function(err, result) {
 
                     if (err) {
@@ -91,7 +93,7 @@ module.exports = {
 
                     db.close();
 
-                    return res.redirect('/criteria');
+                    return res.redirect('/hub_page');
 
                 });
 
