@@ -41,7 +41,7 @@ module.exports = {
 	            var criteria_temp = result[last_index].criteria_template ? JSON.parse(result[last_index].criteria_template) : {};
 
                 db.close();
-                return res.render("criteria", {
+                return res.render("hub_page", {
 				criteria_template : criteria_temp	
 				});
             });
@@ -93,7 +93,7 @@ module.exports = {
 
                     db.close();
 
-                    return res.redirect('/criteria');
+                    return res.redirect('/hub_page');
 
                 });
 
