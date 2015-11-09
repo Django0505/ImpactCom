@@ -38,22 +38,15 @@ module.exports = {
 	create_startup_criteria : reportCriteriaCreator.create_startup_criteria,
 
 	hub_page : function(req, res, next){
-		var menu = [
-						{
-							link :'/hubs/mlab/startups',
-							label : "List Startups"
-						},
-						{
-							link : "/hubs/mlab",
-							label : "View my report"
-						},
-						{
-							link : "/criteria",
-							label : "Report"
-						}
-					];
+		var profile_template = 	{
+									Organisation : "Name of Organisation",		
+									OrganisationDescrption : "Discription of Organisation",
+									YearsActive : "Years active",
+									ContactPerson : "Contact Person",
+									ContactEmail : "Contact Email"
+								};
 
-		res.render('hub_page', {menu : menu});
+		res.render('hub_page', {profile_template : profile_template});
 	},
 	create_startup_criteria : reportCriteriaCreator.create_startup_criteria
 }

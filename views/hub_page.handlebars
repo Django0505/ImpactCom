@@ -38,12 +38,7 @@
 				</table>
 			</div>
 			<div role="tabpanel" class="tab-pane" id="profile_creator">
-				<div class="col-lg-8 col-lg-offset-3">
-					<h1>CREATE STARTUP PROFILE</h1>
-				</div>
-				
 				<form action="/criteria_post" method="POST">
-					<br><br><br>
 					<table>
 						<thead>
 							<tr>
@@ -52,8 +47,41 @@
 						</thead>
 						<br/>
 						<tbody>
+							{{#profile_template}}
+								<tr class="detail-row">
+									<td>{{Organisation}}</td>
+									<td>
+										<input type="text" name="{{id}}">
+									</td>
+									</tr>
+								<tr class="detail-row">
+									<td>{{OrganisationDescrption}}</td>
+									<td>
+										<input type="text" name="{{id}}">
+									</td>
+									</tr>
+								<tr class="detail-row">
+									<td>{{YearsActive}}</td>
+									<td>
+										<input type="text" name="{{id}}">
+									</td>
+									</tr>
+								<tr class="detail-row">
+									<td>{{ContactPerson}}</td>
+									<td>
+										<input type="text" name="{{id}}">
+									</td>
+									</tr>
+								<tr class="detail-row">
+									<td>{{ContactEmail}}</td>
+									<td>
+										<input type="text" name="{{id}}">
+									</td>
+									</tr>
+							{{/profile_template}}
 							<tr class="detail-row">
-								<td><b>Detail:<b> <input name="detail" type="text"></td>
+								<td><b>Detail:</b></td>
+								<td> <input name="detail" type="text"></td>
 								<td>&nbsp;
 									<select name="detail_type" id="inputType">
 										<option value="text">Text</option>
@@ -61,7 +89,7 @@
 									</select>
 								</td>
 								<td>&nbsp;
-									<input class="btn btn-primary detail" readonly value="Add">
+									<button class="btn btn-primary detail" readonly value="Add">Add</button>
 								</td>
 							</tr>
 						</tbody>
@@ -73,9 +101,6 @@
 				</form>
 			</div>
 			<div role="tabpanel" class="tab-pane" id="criteria_creator">
-				<div class="col-lg-8 col-lg-offset-3">
-					<h1>CREATE STARTUP CRITERIA</h1>
-				</div>
 				<form action="/criteria_post" method="POST">
 					<table class="table table-bordered">
 						<thead>
