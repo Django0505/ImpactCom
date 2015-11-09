@@ -5,12 +5,12 @@
 		<div class="panel-body">
 			<ul class="nav nav-pills" role="tablist">
 				<li class="active" role="presentation"><a href="#list" role="tab" data-toggle="tab">STARTUPS</a></li>
+				<li role="presentation"><a href="#hub_report" role="tab" data-toggle="tab">REPORT</a></li>
 				<li role="presentation"><a href="#profile_creator" role="tab" data-toggle="tab">ADD STARTUP</a></li>
-				<li role="presentation"><a href="#criteria_creator" role="tab" data-toggle="tab">STARTUP REPORT TEMPLATE</a></li>
-				
+				<li role="presentation"><a href="#criteria_creator" role="tab" data-toggle="tab">STARTUP REPORT TEMPLATE</a></li>			
 			</ul>
 		</div>
-		<div class="tab-content">
+		<div class="tab-content panel-body">
 			<div role="tabpanel" class="tab-pane active" id="list">
 				<!-- Table -->
 				<table class="table table-striped">
@@ -18,8 +18,8 @@
 						<tr>
 							<th>Startup Name</th>
 							<th>Profile</th>
-							<th>Reports</th>
-							
+							<th>Last Report From Startup</th>
+							<th>Date</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -27,52 +27,53 @@
 							<td><a href="#">Startup</a></td>
 							<td><a href="#">Startup Profile</a></td>
 							<td><a href="#">Startup Report</a></td>
-							
+							<td>Today</td>
 						</tr>
 						<tr>
 							<td><a href="#">Startup2</a></td>
 							<td><a href="#">Startup2 Profile</a></td>
 							<td><a href="#">Startup2 Report</a></td>
+							<td>Today</td>
 						</tr>
 					</tbody>
 				</table>
 			</div>
 			<div role="tabpanel" class="tab-pane" id="profile_creator">
 				<form action="/criteria_post" method="POST">
-					<table>
+					<table class="table">
 						<thead>
 							<tr>
-								<th><h3>Details of STARTUP</h3></th>
+								<th><h3>Details of new STARTUP</h3></th>
 							</tr>
 						</thead>
 						<br/>
 						<tbody>
 							{{#profile_template}}
-								<tr class="detail-row">
+								<tr>
 									<td>{{Organisation}}</td>
 									<td>
 										<input type="text" name="{{id}}">
 									</td>
 									</tr>
-								<tr class="detail-row">
+								<tr>
 									<td>{{OrganisationDescrption}}</td>
 									<td>
-										<input type="text" name="{{id}}">
+										<textarea name="{{id}}"></textarea>
 									</td>
 									</tr>
-								<tr class="detail-row">
+								<tr>
 									<td>{{YearsActive}}</td>
 									<td>
 										<input type="text" name="{{id}}">
 									</td>
 									</tr>
-								<tr class="detail-row">
+								<tr>
 									<td>{{ContactPerson}}</td>
 									<td>
 										<input type="text" name="{{id}}">
 									</td>
 									</tr>
-								<tr class="detail-row">
+								<tr>
 									<td>{{ContactEmail}}</td>
 									<td>
 										<input type="text" name="{{id}}">
@@ -80,16 +81,10 @@
 									</tr>
 							{{/profile_template}}
 							<tr class="detail-row">
-								<td><b>Detail:</b></td>
+								<td><b>Add Another Detail:</b></td>
 								<td> <input name="detail" type="text"></td>
 								<td>&nbsp;
-									<select name="detail_type" id="inputType">
-										<option value="text">Text</option>
-										<option value="number">Number</option>
-									</select>
-								</td>
-								<td>&nbsp;
-									<button class="btn btn-primary detail" readonly value="Add">Add</button>
+									<input class="btn btn-primary detail" readonly value="Add">
 								</td>
 							</tr>
 						</tbody>
@@ -127,6 +122,55 @@
 					
 					<input type="submit" name="create_criteria" class="btn btn-success" value="Save Report Skeleton">
 				</form>
+			</div>
+			<div class="tab-pane" role="tabpanel" id="hub_report">
+				<div class="container">
+
+					<div class="list-group">
+						<h1>HUB - COMPLETE REPORT</h1>
+					</div>
+					<form action="/criteria_post" method="POST">
+						{{#criteria_template}}
+							<table>
+								<tbody>
+									{{#Indicator}}
+										<tr>
+											<td>{{detail}}</td>
+											<td><input type="{{type}}" id="indicator_{{@key}}" name="indicator_{{@key}}" placeholder="{{detail}}"></td>
+										</tr>
+									{{/Indicator}}
+								</tbody>
+							</table>
+							<br/>
+							<table class="table table-bordered" data-click-to-select="true">
+								<thead>
+									<tr>
+										<th colspan="2">Criteria</th>
+									</tr>
+								</thead>
+								<tbody>
+									{{#each Criteria}}
+										<tr class="metric_{{@key}}">
+											<td class="metric_{{@key}}-td">
+												<label>
+													<input type="checkbox" class="metric_{{@key}}" data-checkbox="true">
+													{{metric}}
+												</label>
+											</td>
+											<td class="metric_{{@key}}-td">
+												<input type="{{type}}" name="metric_{{@key}}" class="metric_{{@key}}">
+											</td>
+										</tr>
+									{{/each}}
+								</tbody>
+						{{/criteria_template}}
+						</table>
+						<input type="submit" class="btn btn-success"> 
+					</form>
+					<input class="btn btn-outline btn-primary" id="create_startup_criteria" value="Create Startup Criteria" type="submit">
+					</div><!-- list -->
+				</div>
+
 			</div>
 		</div>
 	</div>

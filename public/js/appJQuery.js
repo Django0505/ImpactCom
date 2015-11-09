@@ -3,7 +3,7 @@ var checked_boxes = {};
 
 $('input[type=checkbox]').click(function(){
 	var checkbox_class_val = $(this).attr('class');
-
+	alert(checkbox_class_val)
 	if ( $(this).checked == false || $(this).checked == undefined) {
 		$(this).checked = true;
 
@@ -27,8 +27,6 @@ $('#create_startup_criteria').click(function(){
 	});
 });
 
-
-//[Followig is...] For creating hub criteria by Funder
 var criteria_template = {}, det_num = 0, met_num = 0;
 
 // Temporarily store details entered by funder
@@ -43,7 +41,7 @@ $(".detail").click(function(){
 
 		criteria_template.Indicator.push({detail : entered_detail.val(),type : entered_detail_type.val()});
 
-		$('.detail-row').before('<tr><td><label>'+entered_detail.val()+'</label></td><td><input type='+entered_detail_type.val()+'></td></tr>');
+		$('.detail-row').before('<tr><td>'+entered_detail.val()+'</td><td><input type='+entered_detail_type.val()+'></td></tr>');
 		entered_detail.val('');
 		det_num++;
 	}
