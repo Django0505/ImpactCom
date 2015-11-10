@@ -1,21 +1,8 @@
 	<div>
 
 		<div class="list-group">
-		{{#OrganisationType}}
-			<h1>{{this}} REPORT</h1>
-		{{/OrganisationType}}
 
 			{{#report}}
-				<table>
-					<tbody>
-						{{#each Indicator}}
-							<tr>
-								<td>{{detail}}</td>	<td>{{value}}</td>
-							</tr>
-						{{/each}}
-					</tbody>
-				</table>
-				<br/>
 				<table class="table table-bordered" data-click-to-select="true">
 					<thead>
 						<tr>
@@ -30,7 +17,7 @@
 									<label>{{metric}}</label>
 								</td>
 								<td class="metric_{{@key}}-td">
-									{{value}}>
+									{{value}}
 								</td>
 							</tr>
 						{{/each}}
