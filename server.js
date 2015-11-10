@@ -62,7 +62,7 @@ app.get('/hubs/:hub_name/startups/startup_name', startupService.view_report);
 app.get('/funder_new', function(req,res, next){
 	res.render('funder')
 })
-app.all('*',function(){
+app.all('*',function(req, res){
 
 	res.send(404);
 })
