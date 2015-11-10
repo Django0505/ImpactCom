@@ -48,11 +48,9 @@ module.exports = {
         });
 	},
 	save_report : function(req, res, next){
-		// var report_template = require('../data/hub_criteria.json'),
-			// answers = JSON.parse(JSON.stringify(req.body));
 
     	var inputData = JSON.parse(JSON.stringify(req.body));
-            inputData["Organisation"] = "mlab"
+            inputData["Organisation"] = "mlab";
 
 
         MongoClient.connect(url, function(err, db) {
