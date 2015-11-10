@@ -115,7 +115,6 @@ module.exports = {
                     }
                 }
 
-                // Insert some documents
                 collection.insert(startup_criteria_template, function(err, result) {
 
                     if (err) {
