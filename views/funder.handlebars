@@ -1,6 +1,7 @@
 <div class="panel panel-default">
 	<!-- Default panel contents -->
 	<div class="panel-heading">Manage</div>
+	<div></div>
 	<div class="panel-body">
 		<ul class="nav nav-pills" role="tablist">
 			<li class="active" role="presentation"><a href="#list" role="tab" data-toggle="tab">HUBS</a></li>
@@ -22,7 +23,7 @@
 					</tr>
 				</thead>
 				<tbody>
-				
+					
 					<tr>
 						<td data-label="Name">AMANZI</td>
 						<td data-label="Profile"><a href="/">View Profile</a></td>
@@ -46,9 +47,41 @@
 						</tr>
 					</thead>
 					<tbody>
+						
+						<tr>
+							<td>Organisation</td>
+							<td>
+								<input type="text" name="id">
+							</td>
+						</tr>
+						<tr>
+							<td>Organisation Descrption</td>
+							<td>
+								<textarea placeholder="Description of your organisation" name="id"></textarea>
+							</td>
+						</tr>
+						<tr>
+							<td>Years Active</td>
+							<td>
+								<input type="text" name="{{id}}">
+							</td>
+						</tr>
+						<tr>
+							<td>Contact Person</td>
+							<td>
+								<input type="text" name="{{id}}">
+							</td>
+						</tr>
+						<tr>
+							<td>Contact Email</td>
+							<td>
+								<input type="text" name="{{id}}">
+							</td>
+						</tr>
+						
 						<tr class="detail-row">
 							<td data-label="Detail"> <input name="detail" type="text"></td>
-						
+							
 							<td>&nbsp;
 								<input class="btn btn-primary detail" readonly value="Add">
 							</td>
@@ -58,13 +91,19 @@
 				<br/>
 				
 				<input type="submit" name="create_criteria" class="btn btn-success" value="Save ">
-
 			</form>
 		</div>
 		<div role="tabpanel" class="tab-pane" id="criteria_creator">
 			<h1>CREATE HUB CRITERIA</h1>
 			<form action="/criteria" method="get">
+				<tr>
+							<td>Report Name:</td>
+							<td>
+								<input type="text" name="id">
+							</td>
+						</tr>
 				<table class="table table-responsive">
+
 					<thead>
 						<tr>
 							<h1 style="text-align:center">Criteria</h1>
@@ -74,6 +113,7 @@
 						</tr>
 					</thead>
 					<tbody>
+						
 						<tr class="metric-row">
 							<td data-label="Name of Metric"><input name="metric" type="text"></td>
 							<td class= "table-cell-borderless"><input class="btn btn-primary metric" readonly value="Add metric"></td>
