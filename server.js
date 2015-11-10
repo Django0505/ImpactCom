@@ -35,6 +35,7 @@ app.get("/funder_page", funderService.funder_page);
 app.post("/criteria_post", reportDataCapturer.save_report);
 
 app.post("/create_startup_criteria", hubService.create_startup_criteria);
+app.post("/add_new_startup", hubService.add_new_startup);
 
 app.get("/startup_criteria", startupService.render_criteria);
 app.post("/confirm_startup_criteria", startupService.confirm_save_report);
@@ -52,17 +53,18 @@ app.get('/hubs/startups', hubService.list_startups);
 app.get('/hubs/startups/:startup_name', startupService.view_report);
 //app.get('/hubs/:hub_name/view_report/',hubService.view_profile);
 app.get('/startup_page', startupService.startup_page);
-app.get('/startup/view_report/:startup_name', startupService.view_report);
+app.get('/startups/view_report/:startup_name', startupService.view_report);
 
 app.get('/hubs', funderService.list_hubs);
-app.get('/hubs/:hub_name', hubService.view_report);
+app.get(['/hubs/:hub_name', '/hub_page/view_report/:rep_num'], hubService.view_report);
 app.get('/hubs/:hub_name/startups', hubService.list_startups);
 app.get('/hubs/:hub_name/startups/startup_name', startupService.view_report);
 
 app.get('/funder_new', function(req,res, next){
 	res.render('funder');
 })
-app.all('*',function(req,res){
+
+app.all('*',function(req, res){
 
 	res.send(404);
 })
