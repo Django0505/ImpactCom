@@ -5,8 +5,11 @@ var exphbs  = require('express-handlebars'),
     MongoClient = require('mongodb').MongoClient,
     session = require('express-session'),
     bodyParser = require('body-parser');
+
 var url = 'mongodb://localhost:27017/impact';
+
 app.use(bodyParser.urlencoded({ extended: false }));
+
 // parse application/json
 app.use(bodyParser.json());
 
@@ -29,7 +32,7 @@ app.get(['/', '/home'], function(req, res, next){
 	res.render('home');
 })
 
-app.get("/criteria", reportDataCapturer.render_criteria);
+app.get(["/funder/criteria","/criteria"], reportDataCapturer.render_criteria);
 app.get("/funder_page", funderService.funder_page);
 
 app.post("/criteria_post", reportDataCapturer.save_report);
