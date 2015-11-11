@@ -65,7 +65,7 @@ module.exports = {
 
                 db.close();
 
-                return res.redirect('/criteria');
+                return res.redirect('/funder/criteria');
 
             });
 

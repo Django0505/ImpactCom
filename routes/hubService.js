@@ -68,7 +68,6 @@ module.exports = {
 	            CriteriaReports.find().toArray(function(err, allReports){
 	                db.close();
 	                
-	                console.log(allReports)
 	                var allReports_copy = [];
 
 					res.render('hub_page', {
