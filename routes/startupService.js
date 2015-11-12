@@ -141,10 +141,11 @@ module.exports = {
                 res.render('view_report', {
                     report : report
                 });
+            });
         });
 	},
     startup_page : function(req, res, next){
 
-        res.render('startup_page')
+        res.render('startup_page');
     }
 }
