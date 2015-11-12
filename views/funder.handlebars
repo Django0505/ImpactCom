@@ -1,128 +1,129 @@
-<div class="panel panel-default">
-	<!-- Default panel contents -->
-	<div class="panel-heading">Manage</div>
-	<div></div>
-	<div class="panel-body">
-		<ul class="nav nav-pills" role="tablist">
-			<li class="active" role="presentation"><a href="#list" role="tab" data-toggle="tab">HUBS</a></li>
-			<li role="presentation"><a href="#profile_creator" role="tab" data-toggle="tab">PROFILE CREATOR</a></li>
-			<li role="presentation"><a href="#criteria_creator" role="tab" data-toggle="tab">CRITERIA CREATOR</a></li>
-			
-		</ul>
-	</div>
-	<div class="tab-content">
-		<div role="tabpanel" class="tab-pane active" id="list">
-			<!-- Table -->
-			<table class="table table-responsive">
-				<thead>
-					<tr>
-						<th>Name</th>
-						<th>Profile</th>
-						<th>Reports</th>
-						
-					</tr>
-				</thead>
-				<tbody>
-					
-					<tr>
-						<td data-label="Name">AMANZI</td>
-						<td data-label="Profile"><a href="/">View Profile</a></td>
-						<td data-label="Reports"><a href="/hubs/:hub_name/view_report">View Reports</a></td>
-						
-					</tr>
-					
-					
-				</tbody>
-			</table>
+<div class="container container-fluid">
+	<div class="panel panel-default">
+		<!-- Default panel contents -->
+		<div class="panel-heading">Manage</div>
+		<div class="panel-body">
+			<ul class="nav nav-pills" role="tablist">
+				<li class="active" role="presentation"><a href="#list" role="tab" data-toggle="tab">HUBS</a></li>
+				<li role="presentation"><a href="#profile_creator" role="tab" data-toggle="tab">PROFILE CREATOR</a></li>
+				<li role="presentation"><a href="#criteria_creator" role="tab" data-toggle="tab">CRITERIA CREATOR</a></li>
+				
+			</ul>
 		</div>
-		<div role="tabpanel" class="tab-pane" id="profile_creator">
-			<h1>CREATE HUB PROFILE</h1>
-			<form action="/criteria" method="get">
-				<br><br><br>
+		<div class="tab-content">
+			<div role="tabpanel" class="tab-pane panel-body active" id="list">
+				<!-- Table -->
 				<table class="table table-responsive">
 					<thead>
 						<tr>
-							<th>Details of HUB</th>
-							<th></th>
-						</tr>
-					</thead>
-					<tbody>
-						
-						<tr>
-							<td>Organisation</td>
-							<td>
-								<input type="text" name="id">
-							</td>
-						</tr>
-						<tr>
-							<td>Organisation Descrption</td>
-							<td>
-								<textarea placeholder="Description of your organisation" name="id"></textarea>
-							</td>
-						</tr>
-						<tr>
-							<td>Years Active</td>
-							<td>
-								<input type="text" name="{{id}}">
-							</td>
-						</tr>
-						<tr>
-							<td>Contact Person</td>
-							<td>
-								<input type="text" name="{{id}}">
-							</td>
-						</tr>
-						<tr>
-							<td>Contact Email</td>
-							<td>
-								<input type="text" name="{{id}}">
-							</td>
-						</tr>
-						
-						<tr class="detail-row">
-							<td data-label="Detail"> <input name="detail" type="text"></td>
+							<th>Name</th>
+							<th>Profile</th>
+							<th>Reports</th>
 							
-							<td>&nbsp;
-								<input class="btn btn-primary detail" readonly value="Add">
-							</td>
-						</tr>
-					</tbody>
-				</table>
-				<br/>
-				
-				<input type="submit" name="create_criteria" class="btn btn-success" value="Save ">
-			</form>
-		</div>
-		<div role="tabpanel" class="tab-pane" id="criteria_creator">
-			<h1>CREATE HUB CRITERIA</h1>
-			<form action="/criteria" method="get">
-				<tr>
-							<td>Report Name:</td>
-							<td>
-								<input type="text" name="id">
-							</td>
-						</tr>
-				<table class="table table-responsive">
-
-					<thead>
-						<tr>
-							<h1 style="text-align:center">Criteria</h1>
-						</tr>
-						<tr>
-							<th>Name of Metric</th>
 						</tr>
 					</thead>
 					<tbody>
 						
-						<tr class="metric-row">
-							<td data-label="Name of Metric"><input name="metric" type="text"></td>
-							<td class= "table-cell-borderless"><input class="btn btn-primary metric" readonly value="Add metric"></td>
+						<tr>
+							<td data-label="Name">AMANZI</td>
+							<td data-label="Profile"><a href="/">View Profile</a></td>
+							<td data-label="Reports"><a href="/hubs/amanzi/view_report">View Reports</a></td>
+							
 						</tr>
+						
+						
 					</tbody>
 				</table>
-				
-				<input type="submit" name="create_criteria" class="btn btn-success" value="Save ">
-			</form>
+			</div>
+			<div role="tabpanel" class="tab-pane panel-body" id="profile_creator">
+				<h1>CREATE HUB PROFILE</h1>
+				<form action="/criteria" method="get">
+					<br><br><br>
+					<table class="table table-responsive">
+						<thead>
+							<tr>
+								<th>Details of HUB</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							
+							<tr>
+								<td>Organisation</td>
+								<td>
+									<input type="text" name="id">
+								</td>
+							</tr>
+							<tr>
+								<td>Organisation Descrption</td>
+								<td>
+									<textarea placeholder="Description of your organisation" name="id"></textarea>
+								</td>
+							</tr>
+							<tr>
+								<td>Years Active</td>
+								<td>
+									<input type="text" name="{{id}}">
+								</td>
+							</tr>
+							<tr>
+								<td>Contact Person</td>
+								<td>
+									<input type="text" name="{{id}}">
+								</td>
+							</tr>
+							<tr>
+								<td>Contact Email</td>
+								<td>
+									<input type="text" name="{{id}}">
+								</td>
+							</tr>
+							
+							<tr class="detail-row">
+								<td data-label="Detail"> <input name="detail" type="text"></td>
+								
+								<td>&nbsp;
+									<input class="btn btn-primary detail" readonly value="Add">
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<br/>
+					
+					<input type="submit" name="create_criteria" class="btn btn-success" value="Save ">
+				</form>
+			</div>
+			<div role="tabpanel" class="tab-pane panel-body" id="criteria_creator">
+				<h1>CREATE HUB CRITERIA</h1>
+				<form action="/criteria" method="get">
+					<tr>
+						<td>Report Name:</td>
+						<td>
+							<input type="text" name="report_name">
+						</td>
+					</tr>
+					<table class="table table-responsive">
+
+						<thead>
+							<tr>
+								<h1 style="text-align:center">Criteria</h1>
+							</tr>
+							<tr>
+								<th>Name of Metric</th>
+							</tr>
+						</thead>
+						<tbody>
+							
+							<tr class="metric-row">
+								<td data-label="Name of Metric"><input name="metric" type="text"></td>
+								<td class= "table-cell-borderless"><input class="btn btn-primary metric" readonly value="Add metric"></td>
+							</tr>
+						</tbody>
+					</table>
+					
+					<input type="submit" name="create_criteria" class="btn btn-success" value="Save ">
+				</form>
+			</div>
 		</div>
 	</div>
 </div>

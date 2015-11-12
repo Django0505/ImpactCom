@@ -121,15 +121,31 @@ module.exports = {
         // return res.redirect('/startup_criteria');
     },
 	view_report : function(req, res, next){
-		var report = reportService.get_report({});
+		
+        MongoClient.connect(url, function(err, db) {
+            if (err) {
+                console.log(err, "\n");
+            }
 
-		res.render('view_report', {
-            report : report,
-            OrganisationType : "StartUp"
+            var CriteriaCreator = db.collection('CriteriaCreator');
+            // Insert some documents
+            CriteriaCreator.find({"For" : "startups"}).toArray(function(err, result) {
+                if (err) {
+                    console.log(err);
+                }
+
+                var create_template = result[result.length-1] ? JSON.parse(JSON.stringify(result[result.length-1])) : {};
+
+                db.close();
+                
+                res.render('view_report', {
+                    // report : report
+                });
+            });
         });
 	},
     startup_page : function(req, res, next){
 
-        res.render('startup_page')
+        res.render('startup_page');
     }
 }
