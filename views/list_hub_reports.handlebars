@@ -1,0 +1,24 @@
+<div class="container panel">
+
+	<div class="panel-header">
+		<h1>HUB - VIEW REPORT</h1>
+	</div>
+	<div class="panel-body">
+		<a type="submit" class="col-lg-2 col-lg-offset-8 btn btn-success" href="/funder_page">Home</a> 
+		<table class="table" data-click-to-select="true">
+				<thead>
+					<tr>
+						<th class="table-bordered">Report Name</th> <th class="table-bordered">Action</th>
+					</tr>
+				</thead>
+			{{#view_hub_report}}
+				<tbody>
+					<tr>
+						<td>Report {{@key}}</td>
+						<td><a href="/hubs/amanzi/view_report/{{@key}}">View this report</a></td>
+					</tr>
+				</tbody>
+			{{/view_hub_report}}
+		</table>
+	</div>
+</div>

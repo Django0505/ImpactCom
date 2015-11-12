@@ -51,7 +51,9 @@ app.get('/create_hub_criteria', reportCriteriaCreator.get_create_hub_criteria);
 app.post('/create_hub_criteria', reportCriteriaCreator.create_hub_criteria);
 
 app.get('/hub_page', hubService.hub_page)
-app.get('/hubs/:hub_name/view_report', hubService.view_report);
+app.get('/hubs/:hub_name/view_report', hubService.list_reports);
+app.get('/hubs/:hub_name/view_report/:rep_num', funderService.view_hub_report);
+
 app.get('/hubs/startups', hubService.list_startups);
 app.get('/hubs/startups/:startup_name', startupService.view_report);
 //app.get('/hubs/:hub_name/view_report/',hubService.view_profile);
@@ -63,13 +65,9 @@ app.get(['/hubs/:hub_name', '/hub_page/view_report/:rep_num'], hubService.view_r
 app.get('/hubs/:hub_name/startups', hubService.list_startups);
 app.get('/hubs/:hub_name/startups/startup_name', startupService.view_report);
 
-app.get('/funder_new', function(req,res, next){
-	res.render('funder');
-})
-
 app.all('*',function(req, res){
 
-	res.send(404);
+	res.sendStatus(404);
 })
 http.listen(3000, function(server){
     console.log('listening on :::3000');

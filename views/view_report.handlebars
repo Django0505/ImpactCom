@@ -1,28 +1,31 @@
-	<div>
-
-		<div class="list-group">
-
-			{{#report}}
-				<table class="table table-bordered" data-click-to-select="true">
-					<thead>
-						<tr>
-							<th colspan="2">Report Answers</th>
+<div class="container panel">
+	{{#home_page}}
+	<a type="submit" class="col-lg-2 col-lg-offset-8 btn btn-success" href="{{this}}">Home</a>
+	{{/home_page}}
+	<br>
+	<br>
+	<div class="list-group panel-body">
+		{{#report}}
+			<table class="table table-bordered" data-click-to-select="true">
+				<thead>
+					<tr>
+						<th>QUESTIONS</th>
+						<th>ANSWERS</th>
+					</tr>
+				</thead>
+				<tbody>
+					{{#each Criteria}}
+						<tr class="metric_{{@key}}-row">
+							<td class="metric_{{@key}}-td">
+								{{metric}}
+							</td>
+							<td class="metric_{{@key}}-td">
+								{{value}}
+							</td>
 						</tr>
-					</thead>
-					<tbody>
-						{{#each Criteria}}
-							<tr class="metric_{{@key}}-row">
-								<td class="metric_{{@key}}-td">
-									<input type="checkbox" class="metric_{{@key}}" data-checkbox="true">
-									<label>{{metric}}</label>
-								</td>
-								<td class="metric_{{@key}}-td">
-									{{value}}
-								</td>
-							</tr>
-						{{/each}}
-					</tbody>
-				{{/report}}
-			</table>
-		</div><!-- list -->
-	</div>
+					{{/each}}
+				</tbody>
+			{{/report}}
+		</table>
+	</div><!-- list -->
+</div>
