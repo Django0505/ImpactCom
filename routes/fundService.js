@@ -20,9 +20,11 @@ module.exports = {
 
 		return res.render('list_hubs', {hubs : hubs});
 	},
+	//render funder page
 	funder_page : function(req,res, next){
 		res.render('funder');
 	},
+	//View a single report of the hub using array index called rep_num
 	view_hub_report : function(req, res, next){
 		MongoClient.connect(url, function(err, db) {
 	        if (err) {
@@ -31,7 +33,16 @@ module.exports = {
 
 	        var collection = db.collection('CriteriaReports');
 	        // Insert some documents
-	        collection.find().toArray(function(err, result) {
+	        collection.find({
+		        	Criteria:{
+		        		$elemMatch:{
+		        			value:{
+		        				$exists : true,
+		        				$nin:[""]
+			        		}
+			        	}
+			        }
+		    	}).toArray(function(err, result) {
 	            if (err) {
 	                console.log(err);
 	            }
@@ -41,7 +52,7 @@ module.exports = {
 	            
 	            db.close();
 	            res.render('view_report', {report : report,
-	            			home_page : "/funder_new"
+	            			home_page : "/funder_page"
 	            			});
 	        });
 	    });
