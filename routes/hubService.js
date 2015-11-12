@@ -104,7 +104,16 @@ module.exports = {
 
 	        var CriteriaReports = db.collection('CriteriaReports');
 	        // Insert some documents
-	        CriteriaReports.find().toArray(function(err, view_hub_report) {
+	        CriteriaReports.find({
+		        	Criteria:{
+		        		$elemMatch:{
+		        			value:{
+		        				$exists : true,
+		        				$nin:[""]
+			        		}
+			        	}
+			        }
+		    	}).toArray(function(err, view_hub_report) {
 	            if (err) {
 	                console.log(err);
 	            }
