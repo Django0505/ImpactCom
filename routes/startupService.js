@@ -137,9 +137,9 @@ module.exports = {
                 var create_template = result[result.length-1] ? JSON.parse(JSON.stringify(result[result.length-1])) : {};
 
                 db.close();
-
+                
                 res.render('view_report', {
-                    report : report
+                    // report : report
                 });
             });
         });

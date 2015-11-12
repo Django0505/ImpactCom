@@ -5,10 +5,10 @@ var	notificationService = require('./notificationService'),
 	reportService = require('./reportService');
 
 
-	var MongoClient = require('mongodb').MongoClient;
+var MongoClient = require('mongodb').MongoClient;
 
-	//Connect to mongodb [ConnectionURL]
-	var url = 'mongodb://localhost:27017/impact';
+//Connect to mongodb [ConnectionURL]
+var url = 'mongodb://localhost:27017/impact';
 
 module.exports = {
 
@@ -30,7 +30,7 @@ module.exports = {
 	            var report = result[report_number];
 	            
 	            db.close();
-	            res.render('view_report', {report : report});
+	            res.render('view_report', {report : report, home_page : "/hub_page"});
 	        });
 	    });
 	},
@@ -94,5 +94,25 @@ module.exports = {
 		var inputData = JSON.stringify(JSON.parse(req.body));
 
 		res.redirect("/hub_page");
+	},
+	list_reports : function (req, res, next) {
+		
+		MongoClient.connect(url, function(err, db) {
+	        if (err) {
+	            console.log(err, "\n");
+	        }
+
+	        var CriteriaReports = db.collection('CriteriaReports');
+	        // Insert some documents
+	        CriteriaReports.find().toArray(function(err, view_hub_report) {
+	            if (err) {
+	                console.log(err);
+	            }
+
+	            db.close();
+
+	            res.render('list_hub_reports', {view_hub_report : view_hub_report});
+	        });
+	    });
 	}
 }
